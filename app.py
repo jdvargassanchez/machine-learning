@@ -19,20 +19,4 @@ def calculateGrade():
         hours = float(request.form["hours"])
         calculateResult = LinearRegression.calculateGrade(hours)
     return render_template("linearRegressionGrades.html", result = calculateResult)
-
-@app.route('/logisticRegression', methods=["GET", "POST"])
-def logisticRegression():
-    result = None
     
-    if request.method == "POST":
-        edad = float(request.form["edad"])
-        ingreso = float(request.form["ingreso"])
-        visitas = float(request.form["visitas"])
-        tiempo = float(request.form["tiempo"])
-        compras = float(request.form["compras"])
-        descuento = float(request.form["descuento"])
-
-        data = [edad, ingreso, visitas, tiempo, compras, descuento]
-        result = LogisticRegressionModel.predict(data)
-
-    return render_template("logisticRegression.html", result=result)
