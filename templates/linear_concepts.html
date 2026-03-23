@@ -3,88 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Linear Regression - Basic Concepts</title>
+    <title>Linear Regression — Basic Concepts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body class="inner-page">
 
-<div class="container">
-
-    <h1>📈 Linear Regression - Basic Concepts</h1>
-
-    <h2>1. What is Linear Regression?</h2>
-    <div class="box">
-        <p>
-            Linear Regression is one of the most fundamental algorithms in supervised machine learning.
-            It is used to model and analyze the relationship between a dependent variable (target) and one or more independent variables (features).
-            The main objective of linear regression is to find a mathematical relationship that can be used to predict future values.
-        </p>
-        <p>
-            This model assumes that there is a linear relationship between variables, meaning that when the input variable changes,
-            the output variable changes in a proportional way. It is widely used in real-world applications such as predicting prices, sales, and trends.
-        </p>
+    <!-- Page header -->
+    <div class="page-header">
+        <h1>📈 Linear Regression — Basic Concepts</h1>
+        <span class="badge-tag">Supervised Learning · Regression</span>
     </div>
 
-    <h2>2. Independent and Dependent Variables</h2>
-    <div class="box">
-        <p>In linear regression, variables are divided into two main types:</p>
-        <p><strong>Independent Variable (X):</strong> This is the input or predictor variable. It represents the data used to make predictions.</p>
-        <p><strong>Dependent Variable (Y):</strong> This is the output or target variable. It represents the result that we want to predict.</p>
-        <p>For example, if we want to predict a student's grade based on study hours:</p>
-        <ul>
-            <li>X = Study Hours</li>
-            <li>Y = Final Grade</li>
-        </ul>
+    <!-- Content card -->
+    <div class="content-card">
+
+        <h2 class="section-title">What is Linear Regression?</h2>
+        <div class="box">
+            <p>
+                Linear Regression is one of the most fundamental algorithms in supervised machine learning.
+                It models the relationship between a dependent variable (target) and one or more independent
+                variables (features). The main objective is to find a mathematical relationship that can be
+                used to predict future values.
+            </p>
+            <p>
+                This model assumes a linear relationship between variables: when the input variable changes,
+                the output changes proportionally. It is widely used for predicting prices, sales, and trends.
+            </p>
+        </div>
+
+        <h2 class="section-title">Independent and Dependent Variables</h2>
+        <div class="box">
+            <p>In linear regression, variables are divided into two main types:</p>
+            <p><strong style="color:var(--accent-2)">Independent Variable (X):</strong> The input or predictor variable — the data used to make predictions.</p>
+            <p><strong style="color:var(--accent-2)">Dependent Variable (Y):</strong> The output or target variable — the result we want to predict.</p>
+            <p>For example, predicting a student's grade based on study hours:</p>
+            <ul>
+                <li>X = Study Hours</li>
+                <li>Y = Final Grade</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Training Data</h2>
+        <div class="box">
+            <p>
+                Training data is a dataset that contains both input variables and their corresponding output values.
+                This data is used to train the model so that it can learn the relationship between variables.
+            </p>
+            <p>
+                The quality and size of the training data directly affect model accuracy.
+                A good dataset should be representative, clean, and relevant to the problem.
+            </p>
+        </div>
+
+        <h2 class="section-title">Regression Line</h2>
+        <div class="box">
+            <p>
+                The regression line is the line that best fits the data points in a graph. It represents the
+                predicted relationship between X and Y. The goal is to find the line that minimizes the
+                difference between predicted and actual values — known as the <span class="highlight">error</span>.
+            </p>
+        </div>
+
+        <h2 class="section-title">Slope and Intercept</h2>
+        <div class="box">
+            <p>The equation of a simple linear regression model is:</p>
+            <div class="formula">Y = m·X + b</div>
+            <p><strong style="color:var(--accent-2)">Slope (m):</strong> How much Y changes for each unit increase in X.</p>
+            <p><strong style="color:var(--accent-2)">Intercept (b):</strong> The value of Y when X equals zero.</p>
+            <p>These parameters define the position and direction of the regression line.</p>
+        </div>
+
+        <h2 class="section-title">Example of Application</h2>
+        <div class="box">
+            <p>
+                A common real-world example is predicting house prices. The house size (square meters) serves as
+                the independent variable (X), and the price is the dependent variable (Y).
+            </p>
+            <p>
+                By training the model with historical data, it becomes possible to estimate the price of new
+                houses based on their size — helping real estate companies, buyers, and investors make better decisions.
+            </p>
+        </div>
+
+        <a class="back-link" href="/">⬅ Back to Home</a>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project</p>
+        </div>
+
     </div>
 
-    <h2>3. Training Data</h2>
-    <div class="box">
-        <p>
-            Training data is a dataset that contains both input variables and their corresponding output values.
-            This data is used to train the model so that it can learn the relationship between variables.
-        </p>
-        <p>
-            The quality and size of the training data are very important because they directly affect the accuracy of the model.
-            A good dataset should be representative, clean, and relevant to the problem.
-        </p>
-    </div>
-
-    <h2>4. Regression Line</h2>
-    <div class="box">
-        <p>
-            The regression line is the line that best fits the data points in a graph. It represents the predicted relationship between X and Y.
-            The goal of linear regression is to find the line that minimizes the difference between the predicted values and the actual values.
-        </p>
-        <p>
-            This difference is known as the error, and the model tries to reduce this error as much as possible using mathematical techniques.
-        </p>
-    </div>
-
-    <h2>5. Slope and Intercept</h2>
-    <div class="box">
-        <p>The equation of a simple linear regression model is:</p>
-        <div class="formula">Y = mX + b</div>
-        <p><strong>Slope (m):</strong> Represents how much the dependent variable (Y) changes for each unit increase in the independent variable (X).</p>
-        <p><strong>Intercept (b):</strong> Represents the value of Y when X is equal to zero.</p>
-        <p>These parameters define the position and direction of the regression line.</p>
-    </div>
-
-    <h2>6. Example of Application</h2>
-    <div class="box">
-        <p>
-            A common real-world example of linear regression is predicting house prices. In this case, the size of the house
-            (square meters) can be used as the independent variable, and the price of the house as the dependent variable.
-        </p>
-        <p>
-            By training the model with historical data, it becomes possible to estimate the price of new houses based on their size.
-            This helps real estate companies, buyers, and investors make better decisions.
-        </p>
-    </div>
-
-    <a class="back-link" href="/">⬅ Back to Home</a>
-
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

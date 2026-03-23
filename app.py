@@ -10,9 +10,6 @@ def home():
 @app.route('/use-case1')
 def use_case1():
     return render_template('use_cases1.html')
-
-
-
     
 @app.route('/linear-regression-concepts')
 def linear_concepts():
@@ -21,3 +18,7 @@ def linear_concepts():
 @app.route('/linear-regression-app')
 def linear_app():
     return render_template('linear_app.html')
+
+@app.route('/use-case2')
+def use_case2():
+    return render_template('use_cases2.html')

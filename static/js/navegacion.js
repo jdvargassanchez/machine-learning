@@ -1,19 +1,21 @@
 /**
  * navegacion.js
- * Controla los menús desplegables del índice principal.
+ * Maneja los toggles de navegación del index.
  */
 
-function alternarCasosDeUso() {
-    const menuCasos = document.getElementById("casosDeUso");
-    menuCasos.style.display = menuCasos.style.display === "block" ? "none" : "block";
+function toggle(btn, menuId) {
+    const menu = document.getElementById(menuId);
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    btn.classList.toggle('open', !isOpen);
 }
 
-function alternarAprendizajeSupervisado() {
-    const menuSupervisado = document.getElementById("supervisado");
-    menuSupervisado.style.display = menuSupervisado.style.display === "block" ? "none" : "block";
+function toggleSub(menuId) {
+    const menu = document.getElementById(menuId);
+    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 }
 
-function alternarRegresionLineal() {
-    const menuRegresion = document.getElementById("menuRegresionLineal");
-    menuRegresion.style.display = menuRegresion.style.display === "block" ? "none" : "block";
-}
+// Legacy aliases (in case other pages call old function names)
+function alternarCasosDeUso()           { toggle(document.querySelector('[onclick*="menuCasos"]'), 'menuCasos'); }
+function alternarAprendizajeSupervisado() { toggle(document.querySelector('[onclick*="menuSupervisado"]'), 'menuSupervisado'); }
+function alternarRegresionLineal()       { toggleSub('menuRegresion'); }

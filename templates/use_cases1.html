@@ -3,67 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Use Case 1 - House Price Prediction</title>
+    <title>Use Case 1 — House Price Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body class="inner-page">
 
-<div class="container">
-
-    <h1>🏠 Use Case 1: House Price Prediction</h1>
-
-    <h2>1. Problem Description</h2>
-    <div class="box">
-        <p>
-            In the real estate market, determining the correct price of a house can be challenging.
-            Many factors influence property value, such as location, size, number of rooms, and condition.
-            This use case aims to predict the price of a house using historical data and machine learning techniques.
-        </p>
+    <!-- Page header -->
+    <div class="page-header">
+        <h1>🏠 Use Case 1: House Price Prediction</h1>
+        <span class="badge-tag">Supervised Learning · Regression</span>
     </div>
 
-    <h2>2. Type of Machine Learning</h2>
-    <div class="box">
-        <p>
-            This is a <span class="highlight">Supervised Learning</span> problem because we train the model
-            using labeled data (input features and known house prices).
-        </p>
+    <!-- Content card -->
+    <div class="content-card">
+
+        <h2 class="section-title">Problem Description</h2>
+        <div class="box">
+            <p>
+                In the real estate market, determining the correct price of a house can be challenging.
+                Many factors influence property value, such as location, size, number of rooms, and condition.
+                This use case aims to predict the price of a house using historical data and machine learning techniques.
+            </p>
+        </div>
+
+        <h2 class="section-title">Type of Machine Learning</h2>
+        <div class="box">
+            <p>
+                This is a <span class="highlight">Supervised Learning</span> problem because we train the model
+                using labeled data (input features and known house prices). The specific algorithm used is
+                <span class="highlight">Linear Regression</span>, which finds the best-fit line between
+                input variables and the target price.
+            </p>
+        </div>
+
+        <h2 class="section-title">Input Data</h2>
+        <div class="box">
+            <p>The model uses several input variables such as:</p>
+            <ul>
+                <li>Size of the house (square meters)</li>
+                <li>Number of bedrooms</li>
+                <li>Location / neighbourhood</li>
+                <li>Age of the property</li>
+                <li>Number of bathrooms</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Expected Output</h2>
+        <div class="box">
+            <p>
+                The output is a <span class="highlight">predicted price</span> (a continuous numerical value)
+                representing the estimated market value of the house based on the provided input features.
+            </p>
+        </div>
+
+        <h2 class="section-title">Real-World Relevance</h2>
+        <div class="box">
+            <p>
+                This application is widely used in real estate platforms to help buyers and sellers
+                estimate property values. It also helps banks and investors make better financial decisions
+                reducing uncertainty in the housing market.
+            </p>
+        </div>
+
+        <a class="back-link" href="/">⬅ Back to Home</a>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project</p>
+        </div>
+
     </div>
 
-    <h2>3. Input Data</h2>
-    <div class="box">
-        <p>The model uses several input variables such as:</p>
-        <ul>
-            <li>Size of the house (square meters)</li>
-            <li>Number of bedrooms</li>
-            <li>Location</li>
-            <li>Age of the property</li>
-            <li>Number of bathrooms</li>
-        </ul>
-    </div>
-
-    <h2>4. Expected Output</h2>
-    <div class="box">
-        <p>
-            The output is a <span class="highlight">predicted price</span> of the house based on the input features.
-        </p>
-    </div>
-
-    <h2>5. Real-World Relevance</h2>
-    <div class="box">
-        <p>
-            This application is widely used in real estate platforms to help buyers and sellers
-            estimate property values. It also helps banks and investors make better financial decisions.
-        </p>
-    </div>
-
-    <a class="back-link" href="/">⬅ Back to Home</a>
-
-    <div class="footer">
-        <p>Machine Learning Flask Project</p>
-    </div>
-
-</div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
