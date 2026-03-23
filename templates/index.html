@@ -1,100 +1,41 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Caso de Uso - Machine Learning</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #1e3c72, #2a5298);
-            margin: 0;
-            padding: 0;
-            color: #ffffff;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 50px auto;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.5);
-        }
-
-        h1 {
-            text-align: center;
-            color: #00d4ff;
-        }
-
-        h2 {
-            color: #00ffcc;
-        }
-
-        p {
-            line-height: 1.7;
-        }
-
-        .highlight {
-            color: #ffd700;
-            font-weight: bold;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #00d4ff;
-            color: #000;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #00ffcc;
-        }
-    </style>
+    <title>Machine Learning App</title>
 </head>
 <body>
 
-<div class="container">
-    <h1>Caso de Uso de Machine Learning</h1>
-
-    <h2>Predicción de Fraude en Transacciones Bancarias</h2>
+    <h1>Machine Learning Web Application</h1>
 
     <p>
-        Un caso real de uso de <span class="highlight">Machine Learning</span> es la detección de fraude en bancos.
-        Las entidades financieras procesan millones de transacciones cada día, y revisar cada una manualmente sería imposible.
+        This application demonstrates different Machine Learning use cases and a supervised learning model using linear regression.
     </p>
 
-    <h2>¿Cómo funciona?</h2>
+    <h2>Navigation Menu</h2>
+
+    <ul>
+        <li><a href="/">Home</a></li>
+
+        <li><strong>ML Use Cases</strong></li>
+        <ul>
+            <li><a href="/use-case1">Use Case 1</a></li>
+            <li><a href="/use-case2">Use Case 2</a></li>
+            <li><a href="/use-case3">Use Case 3</a></li>
+            <li><a href="/use-case4">Use Case 4</a></li>
+        </ul>
+
+        <li><strong>Supervised Machine Learning</strong></li>
+        <ul>
+            <li><a href="/linear-regression">Linear Regression</a></li>
+        </ul>
+    </ul>
+
+    <h2>About This Project</h2>
 
     <p>
-        1. Se recopilan datos históricos de transacciones (monto, ubicación, hora, dispositivo, etc.).<br><br>
-        2. Se etiquetan las transacciones como <span class="highlight">fraudulentas</span> o <span class="highlight">legítimas</span>.<br><br>
-        3. Se entrena un modelo de Machine Learning para aprender patrones sospechosos.<br><br>
-        4. Cuando ocurre una nueva transacción, el modelo predice la probabilidad de fraude en tiempo real.
+        The purpose of this project is to understand how Machine Learning models work in real-world scenarios.
+        We explore different use cases and implement a regression model to make predictions.
     </p>
-
-    <h2>Beneficios</h2>
-
-    <p>
-        ✔ Reduce pérdidas económicas.<br>
-        ✔ Detecta fraudes en segundos.<br>
-        ✔ Aprende y mejora continuamente con nuevos datos.
-    </p>
-
-    <h2>Tecnologías utilizadas</h2>
-
-    <p>
-        Algunos algoritmos comunes son:
-        <br><br>
-        • Regresión Logística<br>
-        • Árboles de Decisión<br>
-        • Random Forest<br>
-        • Redes Neuronales
-    </p>
-</div>
 
 </body>
 </html>
