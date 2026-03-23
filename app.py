@@ -7,15 +7,17 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/linear-regression', methods=["GET", "POST"])
-def calculateGrade():
-    calculateResult = None
-    if request.method == "POST":
-        hours = float(request.form["hours"])
-        calculateResult = LinearRegression.calculateGrade(hours)
-    return render_template("linearRegressionGrades.html", result = calculateResult)
-
 @app.route('/use-case1')
 def use_case1():
     return render_template('use_cases1.html')
+
+
+
     
+@app.route('/linear-regression-concepts')
+def linear_concepts():
+    return render_template('linear_concepts.html')
+
+@app.route('/linear-regression-app')
+def linear_app():
+    return render_template('linear_app.html')
