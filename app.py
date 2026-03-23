@@ -18,3 +18,4 @@ def calculateGrade():
 @app.route('/use-case1')
 def use_case1():
     return render_template('use_cases1.html')
+    
