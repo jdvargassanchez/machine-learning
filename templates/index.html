@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,23 +15,32 @@
     <p class="hero-title">Machine Learning App</p>
     <p class="hero-subtitle">Explore ML concepts, use cases and interactive models</p>
 
+    <!-- Hero image -->
+    <div style="text-align:center; margin: 24px auto 8px; max-width:720px;">
+        <img
+            src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=900&fit=crop&auto=format"
+            alt="Machine Learning neural network visualization"
+            style="width:100%; border-radius:16px; object-fit:cover; max-height:280px; box-shadow:0 8px 32px rgba(0,0,0,0.35);"
+        >
+    </div>
+
     <!-- Use Cases -->
     <div class="nav-section">
         <button class="nav-toggle" onclick="toggle(this, 'menuCasos')">
-            <span class="icon">📊</span>
+            <span class="icon"></span>
             Machine Learning Use Cases
             <span class="arrow">▼</span>
         </button>
         <div class="nav-menu" id="menuCasos">
-            <a href="/use-case1">🏠 Use Case 1 — House Price Prediction</a>
-            <a href="/use-case2">⏳ Use Case 2 — Anti-Procrastination App</a>
+            <a href="/use-case1">Use Case 1 — House Price Prediction</a>
+            <a href="/use-case2">Use Case 2 — Anti-Procrastination App</a>
         </div>
     </div>
 
     <!-- Supervised ML -->
     <div class="nav-section">
         <button class="nav-toggle" onclick="toggle(this, 'menuSupervisado')">
-            <span class="icon">🤖</span>
+            <span class="icon"></span>
             Supervised Machine Learning
             <span class="arrow">▼</span>
         </button>
@@ -39,7 +49,7 @@
             <!-- Linear Regression sub-section -->
             <div class="nav-sub-section">
                 <button class="nav-sub-toggle" onclick="toggleSub('menuRegresion')">
-                    📈 Linear Regression <span style="margin-left:auto; font-size:.75rem;">▸</span>
+                    Linear Regression <span style="margin-left:auto; font-size:.75rem;">▸</span>
                 </button>
                 <div class="nav-sub-menu" id="menuRegresion">
                     <a href="/linear-regression-concepts">Basic Concepts</a>
@@ -52,7 +62,7 @@
 
     <!-- Team -->
     <div class="team-card">
-        <h3>👥 Team Members</h3>
+        <h3>Team Members</h3>
         <p>Juan David Vargas</p>
         <p>Camilo Andrés Sichaca</p>
         <p>Sharick Lorena Doncel</p>
@@ -62,4 +72,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/navegacion.js') }}"></script>
 </body>
+
 </html>
