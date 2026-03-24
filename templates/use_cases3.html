@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case 3 — Smart Health Colombia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="inner-page">
+
+    <div class="page-header">
+        <h1>Smart Health Colombia</h1>
+        <span class="badge-tag">Supervised Learning · Binary Classification</span>
+    </div>
+
+    <div style="text-align:center; margin: 20px auto 0; max-width:760px; padding:0 16px;">
+        <img
+            src="https://diariosalud.com/wp-content/uploads/2019/08/Corazon.jpg"
+            alt="Cardiovascular health and AI prevention"
+            style="width:100%; border-radius:14px; object-fit:cover; max-height:260px; box-shadow:0 6px 28px rgba(0,0,0,0.3);"
+        >
+    </div>
+
+    <div class="content-card">
+
+        <h2 class="section-title">Problem Description</h2>
+        <div class="box">
+            <p>
+                In Colombia, many people discover cardiovascular issues when it is already too late. 
+                The current healthcare system often acts reactively, especially in rural areas where 
+                access to specialists is limited. This delay leads to late diagnoses, more expensive 
+                treatments, and avoidable severe consequences for patients.
+            </p>
+        </div>
+
+        <h2 class="section-title">Type of Machine Learning</h2>
+        <div class="box">
+            <p>
+                This project is based on <span class="highlight">Supervised Learning</span>. 
+                The model is trained with historical medical datasets to categorize patients into 
+                specific risk levels. Specifically, it uses a <span class="highlight">Binary Classification</span> 
+                algorithm to determine if a patient is at high risk of a cardiovascular event or not.
+            </p>
+        </div>
+
+        <h2 class="section-title">Input Data</h2>
+        <div class="box">
+            <p>The system analyzes basic and clinical patient information such as:</p>
+            <ul>
+                <li><strong>Biometrics:</strong> Age, Gender, and Body Mass Index (BMI).</li>
+                <li><strong>Clinical Vitals:</strong> Blood pressure and heart rate.</li>
+                <li><strong>Lab Results:</strong> Cholesterol levels (LDL/HDL) and glucose.</li>
+                <li><strong>Lifestyle:</strong> Smoking habits, physical activity, and medical history.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Expected Output</h2>
+        <div class="box">
+            <p>
+                The expected output is a <span class="highlight">probability score</span> of risk. 
+                If the model identifies a high probability of heart disease, it triggers a 
+                preventive alert: <i>"High cardiovascular risk detected. Preventive medical 
+                evaluation is highly recommended."</i>
+            </p>
+        </div>
+
+        <h2 class="section-title">Real-World Relevance</h2>
+        <div class="box">
+            <p>
+                This application is crucial for transforming healthcare in Colombia from reactive 
+                to preventive. By implementing this tool, the health system can reduce 
+                hospitalizations, optimize medical resources, and, most importantly, 
+                save lives through early detection and timely intervention.
+            </p>
+        </div>
+
+        <a class="back-link" href="/">⬅ Back to Home</a>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project — CardioGuard</p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
