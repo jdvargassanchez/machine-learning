@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Case 4 — Customer Churn Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="inner-page">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <h1>Use Case 4: Customer Churn Prediction</h1>
+        <span class="badge-tag">Supervised Learning · Binary Classification</span>
+    </div>
+
+    <!-- Page image -->
+    <div style="text-align:center; margin: 20px auto 0; max-width:760px; padding:0 16px;">
+        <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&fit=crop&auto=format"
+            alt="Customer analytics dashboard — churn prediction"
+            style="width:100%; border-radius:14px; object-fit:cover; max-height:260px; box-shadow:0 6px 28px rgba(0,0,0,0.3);"
+        >
+    </div>
+
+    <!-- Content card -->
+    <div class="content-card">
+
+        <h2 class="section-title">Problem Description</h2>
+        <div class="box">
+            <p>
+                In competitive industries like telecommunications, banking, and subscription services, 
+                retaining existing customers is as critical as acquiring new ones. Customer churn occurs 
+                when clients stop using a service or switch to a competitor. This use case leverages 
+                historical customer data to predict which clients are likely to churn in the near future. 
+                By identifying at-risk customers early, businesses can take proactive retention actions 
+                such as personalized offers, service improvements, or targeted outreach.
+            </p>
+        </div>
+
+        <h2 class="section-title">Type of Machine Learning</h2>
+        <div class="box">
+            <p>
+                This is a <span class="highlight">Supervised Learning</span> problem, specifically a 
+                <span class="highlight">Binary Classification</span> task. The model is trained on 
+                labeled historical data where each customer is tagged as “churned” or “not churned”. 
+                Common algorithms used include <span class="highlight">Random Forest</span>, 
+                <span class="highlight">Gradient Boosting (XGBoost)</span>, and 
+                <span class="highlight">Logistic Regression</span>. These models learn complex 
+                relationships between customer attributes and the likelihood of churn.
+            </p>
+        </div>
+
+        <h2 class="section-title">Input Data</h2>
+        <div class="box">
+            <p>The model ingests a variety of structured customer features, such as:</p>
+            <ul>
+                <li>Demographics: age, gender, tenure (months as a customer)</li>
+                <li>Account information: contract type (monthly, yearly), payment method, monthly charges, total charges</li>
+                <li>Service usage: number of services subscribed (internet, tech support, streaming, etc.)</li>
+                <li>Engagement metrics: customer service calls, complaints, last interaction date</li>
+                <li>Geographical region or market segment</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">Expected Output</h2>
+        <div class="box">
+            <p>
+                The model produces a <span class="highlight">binary prediction</span> indicating 
+                whether the customer is likely to churn (1) or not (0). Additionally, many implementations 
+                output a <span class="highlight">probability score</span> (e.g., 0.87) that helps 
+                prioritize high-risk customers. This output can be integrated into CRM dashboards 
+                or automated retention campaigns.
+            </p>
+        </div>
+
+        <h2 class="section-title">Real-World Relevance</h2>
+        <div class="box">
+            <p>
+                Churn prediction is widely adopted across telecom, SaaS, banking, and media industries. 
+                It enables companies to reduce customer attrition rates, optimize retention budgets, 
+                and increase customer lifetime value (CLV). By acting on model insights, organizations 
+                can improve profitability, enhance customer experience, and gain a competitive edge. 
+                According to industry studies, increasing retention by 5% can boost profits by 25–95%.
+            </p>
+        </div>
+
+        <a class="back-link" href="/">⬅ Back to Home</a>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project</p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
