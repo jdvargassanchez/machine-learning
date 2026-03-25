@@ -17,5 +17,7 @@ model = LinearRegression()
 model.fit(x, y)
 
 def calculateGrade(hours):
-    result = model.predict([[hours]])[0]
-    return result
+    import pandas as pd
+    input_df = pd.DataFrame({"Study Hours": [hours]})
+    result = model.predict(input_df)[0][0]
+    return float(result)
