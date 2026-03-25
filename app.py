@@ -22,3 +22,11 @@ def linear_app():
 @app.route('/use-case2')
 def use_case2():
     return render_template('use_cases2.html')
+
+@app.route('/use-case3')
+def use_case3():  
+    return render_template('use_cases3.html')
+
+@app.route('/use-case4')
+def use_case4():
+    return render_template('use_cases4.html')
