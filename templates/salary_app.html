@@ -3,23 +3,69 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Salary Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Predictor — Linear Regression</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
-<body>
+<body class="grades-page">
 
-    <h2>Salary Prediction (Linear Regression)</h2>
+    <div class="grades-wrapper">
 
-    <form method="POST">
-        <label>Years of Experience:</label>
-        <input type="number" step="any" name="experience" required>
-        <button type="submit">Predict</button>
-    </form>
+        <h1>Salary Predictor</h1>
+        <p style="text-align:center; color:var(--text-secondary); margin-bottom:20px; font-size:.95rem;">
+            Enter years of experience to estimate a salary using Linear Regression.
+        </p>
 
-    {% if prediction %}
-    <h3>Estimated Salary: ${{ prediction }}</h3>
-    {% endif %}
+        <!-- Illustrative image -->
+        <div style="text-align:center; margin-bottom:28px;">
+            <img
+                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&fit=crop&auto=format"
+                alt="Professional work environment — salary predictor"
+                style="width:100%; max-width:560px; border-radius:14px; object-fit:cover; max-height:220px; box-shadow:0 6px 28px rgba(0,0,0,0.3);"
+            >
+        </div>
 
+        <div class="predict-card">
+
+            <form id="formularioSalario" method="post">
+
+                <label for="experience">Years of Experience</label>
+                <input
+                    type="number"
+                    id="experience"
+                    name="experience"
+                    min="0"
+                    max="50"
+                    step="0.5"
+                    placeholder="e.g. 5"
+                    required
+                >
+
+                <button type="submit" class="btn-predict">Predict Salary →</button>
+
+            </form>
+
+            {% if prediction is not none %}
+            <div class="result-box">
+                <h2>Estimated Salary: ${{ "{:,.0f}".format(prediction) }} USD/year</h2>
+            </div>
+            {% endif %}
+
+        </div>
+
+        <div style="text-align:center; margin-top:28px;">
+            <a class="back-link" href="/">Back to Home</a>
+        </div>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project</p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

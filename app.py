@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import LinearRegression
+import linearregressionexample
 
 app = Flask(__name__)
 
@@ -15,9 +16,14 @@ def use_case1():
 def linear_concepts():
     return render_template('linear_concepts.html')
 
-@app.route('/linear-regression-app')
+@app.route('/linear-regression-app', methods=['GET', 'POST'])
 def linear_app():
-    return render_template('linear_app.html')
+    result = None
+    if request.method == 'POST':
+        hours = float(request.form['hours'])
+        raw = LinearRegression.calculateGrade(hours)
+        result = round(float(raw), 2)
+    return render_template('linearRegressionGrades.html', result=result)
 
 @app.route('/use-case2')
 def use_case2():
@@ -33,7 +39,12 @@ def use_case4():
 
 @app.route('/salary-predictor', methods=['GET', 'POST'])
 def salary_app():
-    return render_template('salary_app.html')
+    prediction = None
+    if request.method == 'POST':
+        experience = float(request.form['experience'])
+        raw = linearregressionexample.get_prediction(experience)
+        prediction = round(float(raw), 2)
+    return render_template('salary_app.html', prediction=prediction)
 
 if __name__ == '__main__':
     app.run(debug=True)
