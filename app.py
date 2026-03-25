@@ -30,3 +30,10 @@ def use_case3():
 @app.route('/use-case4')
 def use_case4():
     return render_template('use_cases4.html')
+
+@app.route('/salary-predictor', methods=['GET', 'POST'])
+def salary_app():
+    return render_template('salary_app.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
