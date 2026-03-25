@@ -95,6 +95,6 @@ ax.text(0.04, 0.92, eq_text, transform=ax.transAxes,
         bbox=dict(boxstyle="round,pad=0.4", facecolor="#1e1b4b", alpha=0.7))
 
 plt.tight_layout()
-plt.savefig(os.path.join(BASE_DIR, "data", "regression_salary.png"), dpi=150)
+plt.savefig(os.path.join(BASE_DIR, "static", "images", "regression_salary.png"), dpi=150)
 plt.show()
-print("\n  Chart saved to: data/regression_salary.png")
+print("\n  Chart saved to: static/images/regression_salary.png")
