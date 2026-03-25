@@ -27,6 +27,54 @@
             >
         </div>
 
+        <!-- Methodology explanation -->
+        <div style="
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 14px;
+            padding: 22px 28px;
+            margin-bottom: 28px;
+            font-size: .9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        ">
+            <h3 style="color:var(--accent); font-size:1rem; margin-bottom:12px; font-weight:600;">
+                About this model
+            </h3>
+            <p style="margin:0 0 10px;">
+                This predictor uses <strong style="color:var(--text-primary);">Simple Linear Regression</strong>,
+                a supervised machine-learning technique that fits a straight line through the training data
+                to model the relationship between one input and one output.
+            </p>
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <th style="text-align:left; padding:6px 10px; color:var(--text-primary); font-weight:600;">Role</th>
+                        <th style="text-align:left; padding:6px 10px; color:var(--text-primary); font-weight:600;">Variable</th>
+                        <th style="text-align:left; padding:6px 10px; color:var(--text-primary); font-weight:600;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="padding:6px 10px; color:#a78bfa;">Independent (X)</td>
+                        <td style="padding:6px 10px;"><code style="color:#e2e8f0;">experience</code></td>
+                        <td style="padding:6px 10px;">Years of work experience entered by the user</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:6px 10px; color:#a78bfa;">Dependent (y)</td>
+                        <td style="padding:6px 10px;"><code style="color:#e2e8f0;">salary_usd</code></td>
+                        <td style="padding:6px 10px;">Estimated annual salary in USD (model output)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin:12px 0 0; font-size:.82rem; color:#94a3b8;">
+                The model was trained on <code style="color:#e2e8f0;">train.csv</code> using
+                <strong style="color:var(--text-primary);">scikit-learn's <code>LinearRegression</code></strong>.
+                It learns the coefficient (slope) and intercept that minimize the sum of squared errors
+                between the predicted and actual salaries in the dataset.
+            </p>
+        </div>
+
         <div class="predict-card">
 
             <form id="formularioSalario" method="post">
