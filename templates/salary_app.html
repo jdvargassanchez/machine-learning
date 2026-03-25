@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Salary Predictor</title>
+</head>
+
+<body>
+
+    <h2>Salary Prediction (Linear Regression)</h2>
+
+    <form method="POST">
+        <label>Years of Experience:</label>
+        <input type="number" step="any" name="experience" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+    <h3>Estimated Salary: ${{ prediction }}</h3>
+    {% endif %}
+
+</body>
+
+</html>
