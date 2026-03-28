@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import LinearRegression
 import linearregressionexample
+import logisticregressionexample
 
 app = Flask(__name__)
 
@@ -15,6 +16,10 @@ def use_case1():
 @app.route('/linear-regression-concepts')
 def linear_concepts():
     return render_template('linear_concepts.html')
+
+@app.route('/logistic-regression-concepts')
+def logistic_concepts():
+    return render_template('logistic_concepts.html')
 
 @app.route('/linear-regression-app', methods=['GET', 'POST'])
 def linear_app():
@@ -46,6 +51,12 @@ def salary_app():
         prediction = round(float(raw), 2)
     return render_template('salary_app.html', prediction=prediction)
 
+@app.route('/logistic-regression-app', methods=['GET', 'POST'])
+def logistic_app():
+    prediction = None
+    if request.method == 'POST':
+        prediction = logisticregressionexample.handle_form(request.form)
+    return render_template('logistic_regression_app.html', prediction=prediction)
 @app.route('/qda_concepts')
 def qda_concepts():
     return render_template('qda_concepts.html')
