@@ -38,7 +38,7 @@ def train_model():
 _model, _scaler = train_model()
 
 
-def g et_prediction(age, gender, vaccination_status, fever, cough, fatigue,
+def get_prediction(age, gender, vaccination_status, fever, cough, fatigue,
                    shortness_of_breath, loss_of_smell, headache, diabetes,
                    hypertension, heart_disease, asthma, cancer):
     features = np.array([[age, gender, vaccination_status, fever, cough, fatigue,
