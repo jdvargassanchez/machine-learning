@@ -7,66 +7,85 @@ from sklearn.preprocessing import StandardScaler
 
 
 def train_model():
-    # load data
+    # Load data
     data = pd.read_csv("data/covid_symptoms_severity_prediction.csv")
 
-    # split data
+    # Convert categorical variables to numeric
+    data = pd.get_dummies(data, drop_first=True)
+
+    # Split data
     X = data.drop("hospitalized", axis=1)
     y = data["hospitalized"]
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Save column names for later use
+    feature_names = X.columns
 
-    # scale data
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+
+    # Scale data
     scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
-    # train model
-    model = LogisticRegression()
+    # Train model
+    model = LogisticRegression(max_iter=1000)
     model.fit(X_train, y_train)
 
-    # evaluate
+    # Evaluate
     y_pred = model.predict(X_test)
     print("Accuracy:", accuracy_score(y_test, y_pred))
-    print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
-    print("Classification Report:", classification_report(y_test, y_pred))
+    print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+    print("Classification Report:\n", classification_report(y_test, y_pred))
 
-    return model, scaler
-
-
-# Train once when the module is imported
-_model, _scaler = train_model()
+    return model, scaler, feature_names
 
 
-def get_prediction(age, gender, vaccination_status, fever, cough, fatigue,
-                   shortness_of_breath, loss_of_smell, headache, diabetes,
-                   hypertension, heart_disease, asthma, cancer):
-    features = np.array([[age, gender, vaccination_status, fever, cough, fatigue,
-                           shortness_of_breath, loss_of_smell, headache, diabetes,
-                           hypertension, heart_disease, asthma, cancer]])
-    features_scaled = _scaler.transform(features)
-    prediction = _model.predict(features_scaled)
-    return float(prediction[0])
+# Train once
+_model, _scaler, _feature_names = train_model()
 
 
-#handle form   
+def get_prediction(input_data: dict):
+    # Convert input dict to DataFrame
+    df = pd.DataFrame([input_data])
+
+    # Apply same encoding
+    df = pd.get_dummies(df)
+
+    #  Align columns with training data
+    df = df.reindex(columns=_feature_names, fill_value=0)
+
+    # Scale
+    df_scaled = _scaler.transform(df)
+
+    # Predict
+    prediction = _model.predict(df_scaled)
+    probability = _model.predict_proba(df_scaled)
+
+    return {
+        "prediction": int(prediction[0]),
+        "probability": float(probability[0][1])  # probabilidad de hospitalización
+    }
+
+
+# Handle form (Flask)
 def handle_form(form):
-    age = float(form['age'])
-    gender = float(form['gender'])
-    vaccination_status = float(form['vaccination_status'])
-    fever = float(form['fever'])
-    cough = float(form['cough'])
-    fatigue = float(form['fatigue'])
-    shortness_of_breath = float(form['shortness_of_breath'])
-    loss_of_smell = float(form['loss_of_smell'])
-    headache = float(form['headache'])
-    diabetes = float(form['diabetes'])
-    hypertension = float(form['hypertension'])
-    heart_disease = float(form['heart_disease'])
-    asthma = float(form['asthma'])
-    cancer = float(form['cancer'])
-    return get_prediction(
-        age, gender, vaccination_status, fever, cough, fatigue,
-        shortness_of_breath, loss_of_smell, headache, diabetes,
-        hypertension, heart_disease, asthma, cancer
-    )
+    input_data = {
+        "age": float(form['age']),
+        "gender": form['gender'],  # ahora puede ser 'Male' o 'Female'
+        "vaccination_status": form['vaccination_status'],  # 'Yes' o 'No'
+        "fever": float(form['fever']),
+        "cough": float(form['cough']),
+        "fatigue": float(form['fatigue']),
+        "shortness_of_breath": float(form['shortness_of_breath']),
+        "loss_of_smell": float(form['loss_of_smell']),
+        "headache": float(form['headache']),
+        "diabetes": float(form['diabetes']),
+        "hypertension": float(form['hypertension']),
+        "heart_disease": float(form['heart_disease']),
+        "asthma": float(form['asthma']),
+        "cancer": float(form['cancer'])
+    }
+
+    return get_prediction(input_data)
