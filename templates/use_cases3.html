@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "navegation_menu.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Use Case 3 — Smart Health Colombia</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+{% block title %}Use Case 3{% endblock %}
 
-<body class="inner-page">
+{% block content %}
+
 
     <div class="page-header">
-        <h1>Smart Health Colombia</h1>
+        <h1>Use Case 3: Smart Health Colombia</h1>
         <span class="badge-tag">Supervised Learning · Binary Classification</span>
     </div>
 
@@ -86,6 +80,5 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+    {% endblock %}

@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "navegation_menu.html" %}
+
+{% block title %}Quadratic Discriminant Analysis (QDA){% endblock %}
+
+{% block content %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +24,7 @@
     <!-- Header -->
     <div class="page-header text-center">
         <h1>Quadratic Discriminant Analysis (QDA)</h1>
-        <span class="badge-tag">Assigned Classification Model</span>
+        <span class="badge-tag">Assigned Model · Supervised Classification</span>
 
         <div class="qda-hero-actions">
             <a href="#details" class="btn btn-outline-light btn-soft">
@@ -28,7 +32,7 @@
             </a>
 
             <a href="/qda-example" class="btn btn-success btn-soft">
-                <i class="fa-solid fa-link me-2"></i>Example
+                <i class="fa-solid fa-link me-2"></i>Open Future Example
             </a>
         </div>
     </div>
@@ -36,8 +40,8 @@
     <!-- Main image -->
     <div class="qda-image-wrapper">
         <img
-            src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=900&fit=crop&auto=format"
-            alt="Quadratic Discriminant Analysis classification"
+            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1400&fit=crop&auto=format"
+            alt="Data analysis and machine learning visualization"
         >
     </div>
 
@@ -48,27 +52,53 @@
         <div class="qda-quick-summary">
             <h2 class="section-title mb-3">Quick Summary</h2>
             <p>
-                <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> is a supervised classification
-                algorithm used to predict which category or class a data point belongs to. It does this by estimating
-                the probability distribution of each class separately and then assigning the new observation to the
-                class with the highest probability.
+                <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> is a supervised classification algorithm
+                that predicts which class a new observation belongs to by estimating the probability distribution of each class independently.
+                It is especially useful when the separation between classes is <span class="highlight">nonlinear</span> and when each class
+                has a different internal variability structure.
             </p>
+
             <div class="mt-3">
+                <span class="qda-tag-pill">Supervised Learning</span>
+                <span class="qda-tag-pill">Classification</span>
                 <span class="qda-tag-pill">Probabilistic Model</span>
                 <span class="qda-tag-pill">Nonlinear Boundaries</span>
                 <span class="qda-tag-pill">Gaussian Assumption</span>
-                <span class="qda-tag-pill">Class-Specific Covariance</span>
+                <span class="qda-tag-pill">Flexible Decision Regions</span>
             </div>
         </div>
 
+        <!-- Quick stats -->
+        <div class="qda-stats-row">
+            <div class="qda-stat-box">
+                <h3>ML</h3>
+                <p>Supervised Classification Model</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>QDA</h3>
+                <p>Quadratic Decision Boundaries</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>PDF</h3>
+                <p>Probability Density Based</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>Σ</h3>
+                <p>Class-Specific Covariance</p>
+            </div>
+        </div>
+
+        <hr class="qda-section-divider">
+
         <!-- Info Cards -->
+        <h2 class="section-title">Core Highlights</h2>
         <div class="qda-info-grid">
             <div class="qda-mini-card">
                 <i class="fa-solid fa-brain"></i>
                 <h3>What It Is</h3>
                 <p>
                     A supervised machine learning algorithm used to classify observations into predefined categories
-                    based on statistical probability.
+                    based on statistical probability and feature distributions.
                 </p>
             </div>
 
@@ -76,8 +106,8 @@
                 <i class="fa-solid fa-chart-line"></i>
                 <h3>How It Works</h3>
                 <p>
-                    It models the data distribution of each class independently and predicts the most likely class
-                    for a new observation.
+                    It learns the statistical distribution of each class and predicts the most likely class
+                    for a new unseen observation.
                 </p>
             </div>
 
@@ -96,6 +126,24 @@
                 <p>
                     Frequently applied in medical diagnosis, fraud detection, academic performance analysis,
                     and scientific classification.
+                </p>
+            </div>
+
+            <div class="qda-mini-card">
+                <i class="fa-solid fa-database"></i>
+                <h3>Data Requirement</h3>
+                <p>
+                    QDA usually performs better when there is enough training data available for each class,
+                    since it must estimate a covariance matrix per category.
+                </p>
+            </div>
+
+            <div class="qda-mini-card">
+                <i class="fa-solid fa-diagram-project"></i>
+                <h3>Why It Matters</h3>
+                <p>
+                    It is valuable when simpler linear classifiers fail to capture the true shape of separation
+                    between groups in a dataset.
                 </p>
             </div>
         </div>
@@ -117,11 +165,11 @@
                         <div class="accordion-body">
                             <p>
                                 <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> is a supervised learning algorithm
-                                designed for classification problems. This means it is trained with labeled data, where each observation
+                                designed for classification problems. This means it is trained using labeled data, where each observation
                                 already belongs to a known class.
                             </p>
                             <p>
-                                Its main objective is to learn how the features of each class are distributed and then use that information
+                                Its objective is to learn how the features of each class are distributed and then use that information
                                 to classify new unseen data. QDA is especially useful when the classes have different internal variability
                                 and cannot be separated by a simple straight line.
                             </p>
@@ -256,19 +304,64 @@
             </div>
         </div>
 
-        <!-- Future Example Link -->
-        <div class="qda-example-box">
-            <h2 class="section-title mb-3">Future Example Section</h2>
+        <!-- Extra detail panel -->
+        <div class="qda-feature-panel">
+            <h2 class="section-title">Additional Insights</h2>
             <p>
-                Add here the example (Santiago)
+                Beyond its mathematical foundation, QDA is important because it helps explain how classification can be
+                performed using probability theory and feature distributions rather than only distance or simple separation rules.
             </p>
 
-            <a href="/qda-example" class="btn btn-success btn-soft mt-2">
-                <i class="fa-solid fa-link me-2"></i>Example
-            </a>
+            <div class="qda-two-col">
+                <div class="qda-comparison-box">
+                    <h4><i class="fa-solid fa-lightbulb me-2"></i>When to Use QDA</h4>
+                    <ul>
+                        <li>When classes are not linearly separable</li>
+                        <li>When each class has different variability</li>
+                        <li>When probabilistic predictions are useful</li>
+                        <li>When feature distributions are approximately Gaussian</li>
+                    </ul>
+                </div>
+
+                <div class="qda-comparison-box">
+                    <h4><i class="fa-solid fa-triangle-exclamation me-2"></i>Key Assumptions</h4>
+                    <ul>
+                        <li>Each class follows a Gaussian distribution</li>
+                        <li>Features contain meaningful discriminative information</li>
+                        <li>Enough samples exist to estimate covariance matrices reliably</li>
+                        <li>Extreme outliers should be limited or treated carefully</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="qda-note">
+                <strong>Important note:</strong> QDA is more flexible than LDA, but that flexibility comes with a trade-off:
+                it usually needs more data to estimate class-specific covariance structures correctly.
+            </div>
         </div>
 
-        <!-- Optional Summary Box -->
+        <!-- QDA vs LDA -->
+        <div class="mt-5">
+            <h2 class="section-title">QDA vs LDA</h2>
+            <div class="box qda-box">
+                <p>
+                    <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> and
+                    <span class="highlight">Linear Discriminant Analysis (LDA)</span> are closely related classification methods,
+                    but they differ in flexibility.
+                </p>
+                <ul>
+                    <li><strong>LDA</strong> assumes that all classes share the same covariance matrix.</li>
+                    <li><strong>QDA</strong> allows each class to have its own covariance matrix.</li>
+                    <li><strong>LDA</strong> creates linear decision boundaries.</li>
+                    <li><strong>QDA</strong> creates quadratic (curved) decision boundaries.</li>
+                </ul>
+                <p>
+                    Because of this, QDA can better adapt to complex datasets, while LDA may be more stable when the amount of training data is limited.
+                </p>
+            </div>
+        </div>
+
+        <!-- Final Summary -->
         <h2 class="section-title mt-5">Final Summary</h2>
         <div class="box qda-box">
             <p>
@@ -280,6 +373,19 @@
                 Although it requires some statistical assumptions and enough training data, QDA remains a strong choice
                 for many real-world classification problems where class distributions differ in structure and variability.
             </p>
+        </div>
+
+        <!-- Future Example Link -->
+        <div class="qda-future-link-box">
+            <h2 class="section-title mb-3">Future Example Section</h2>
+            <p>
+                This button is reserved for connecting a future practical example of QDA, such as a prediction page,
+                a dataset visualization, or a working Flask model demonstration.
+            </p>
+
+            <a href="/qda-example" class="btn btn-success btn-soft mt-2">
+                <i class="fa-solid fa-link me-2"></i>Open Future Example
+            </a>
         </div>
 
         <!-- Back -->
@@ -294,4 +400,5 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+
+{% endblock %}

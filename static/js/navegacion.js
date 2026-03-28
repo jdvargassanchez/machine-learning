@@ -1,21 +1,34 @@
-/**
- * navegacion.js
- * Maneja los toggles de navegación del index.
- */
+function toggleHamburgerMenu() {
+    const menu = document.getElementById("hamburgerMenu");
 
-function toggle(btn, menuId) {
-    const menu = document.getElementById(menuId);
-    const isOpen = menu.style.display === 'flex';
-    menu.style.display = isOpen ? 'none' : 'flex';
-    btn.classList.toggle('open', !isOpen);
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
 }
 
-function toggleSub(menuId) {
-    const menu = document.getElementById(menuId);
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+function toggleSub(id) {
+    const submenu = document.getElementById(id);
+
+    if (submenu.style.display === "block") {
+        submenu.style.display = "none";
+    } else {
+        submenu.style.display = "block";
+    }
 }
 
-// Legacy aliases (in case other pages call old function names)
-function alternarCasosDeUso()           { toggle(document.querySelector('[onclick*="menuCasos"]'), 'menuCasos'); }
-function alternarAprendizajeSupervisado() { toggle(document.querySelector('[onclick*="menuSupervisado"]'), 'menuSupervisado'); }
-function alternarRegresionLineal()       { toggleSub('menuRegresion'); }
+// Cerrar menú al hacer click fuera
+document.addEventListener("click", function(event) {
+    const menu = document.getElementById("hamburgerMenu");
+    const button = document.querySelector(".hamburger-btn");
+
+    if (!menu || !button) return;
+
+    const clickedInsideMenu = menu.contains(event.target);
+    const clickedButton = button.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedButton) {
+        menu.style.display = "none";
+    }
+});

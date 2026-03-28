@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Machine Learning App{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+<header class="top-navbar">
+    <div class="navbar-left">
+        <img src="{{ url_for('static', filename='images/logo_udec.png') }}" alt="Logo" class="navbar-logo">
+        <div class="navbar-brand-text">
+            <span class="brand-main">Machine Learning App</span>
+            <span class="brand-sub">Supervised Learning Project</span>
+        </div>
+    </div>
+
+    <!-- MENU CENTRADO -->
+    <div class="navbar-center">
+        <nav class="navbar-links">
+
+            <a href="/" class="nav-link-custom">Home</a>
+
+            <!-- Use Cases -->
+            <div class="dropdown-custom">
+                <button class="dropbtn-custom">Use Cases</button>
+                <div class="dropdown-content-custom">
+                    <a href="/use-case1">Use Case 1 — House Price Prediction</a>
+                    <a href="/use-case2">Use Case 2 — Anti-Procrastination App</a>
+                    <a href="/use-case3">Use Case 3 — Smart Health Colombia</a>
+                    <a href="/use-case4">Use Case 4 — Customer Churn Prediction App</a>
+                </div>
+            </div>
+
+            <!-- Supervised ML -->
+            <div class="dropdown-custom">
+                <button class="dropbtn-custom">Supervised ML</button>
+                <div class="dropdown-content-custom">
+
+                    <div class="dropdown-submenu">
+                        <button class="submenu-btn">Linear Regression ▸</button>
+                        <div class="dropdown-subcontent">
+                            <a href="/linear-regression-concepts">Basic Concepts</a>
+                            <a href="/linear-regression-app">Grade Predictor</a>
+                            <a href="/salary-predictor">Application</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-submenu">
+                        <button class="submenu-btn">Logistic Regression ▸</button>
+                        <div class="dropdown-subcontent">
+                            <a href="/logistic-regression-concepts">Basic Concepts</a>
+                            <a href="/logistic-regression-app">Application</a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown-submenu">
+                        <button class="submenu-btn">Quadratic Discriminant Analysis (QDA) ▸</button>
+                        <div class="dropdown-subcontent">
+                            <a href="/qda_concepts">Basic Concepts</a>
+                            <a href="/qda_example">Example</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </nav>
+    </div>
+</header>
+
+    <!-- PAGE CONTENT -->
+    <main class="page-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
