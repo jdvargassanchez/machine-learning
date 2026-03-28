@@ -57,6 +57,13 @@ def logistic_app():
     if request.method == 'POST':
         prediction = logisticregressionexample.handle_form(request.form)
     return render_template('logistic_regression_app.html', prediction=prediction)
+@app.route('/qda_concepts')
+def qda_concepts():
+    return render_template('qda_concepts.html')
+
+@app.route('/qda-example')
+def qda_example():
+    return render_template('qda_example.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
