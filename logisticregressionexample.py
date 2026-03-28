@@ -4,46 +4,46 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_classification
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 
-#load data
-data=pd.read_csv("data/covid_symptoms_severity_prediction.csv")
+def train_model():
+    # load data
+    data = pd.read_csv("data/covid_symptoms_severity_prediction.csv")
 
-#explore data
-print(data.head())
-print(data.info())
-print(data.describe())
+    # split data
+    X = data.drop("hospitalized", axis=1)
+    y = data["hospitalized"]
 
-#split data
-X=data.drop("hospitalized", axis=1)
-y=data["hospitalized"]
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-X_train, X_test, y_train, y_test=train_test_split(X,y, test_size=0.2, random_state=42)
+    # scale data
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
 
-#scale data
-scaler=StandardScaler()
-X_train=scaler.fit_transform(X_train)
-X_test=scaler.transform(X_test)
+    # train model
+    model = LogisticRegression()
+    model.fit(X_train, y_train)
 
-#train model
-model=LogisticRegression()
-model.fit(X_train, y_train)
+    # evaluate
+    y_pred = model.predict(X_test)
+    print("Accuracy:", accuracy_score(y_test, y_pred))
+    print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
+    print("Classification Report:", classification_report(y_test, y_pred))
 
-#predict
-y_pred=model.predict(X_test)
+    return model, scaler
 
-#evaluate
-print("Accuracy:", accuracy_score(y_test, y_pred))
-print("Confusion Matrix:", confusion_matrix(y_test, y_pred))
-print("Classification Report:", classification_report(y_test, y_pred))
 
-#plot
-plt.figure(figsize=(8,6))
-plt.scatter(X_test[:,0], X_test[:,1], c=y_pred, cmap='viridis')
-plt.xlabel("Feature 1")
-plt.ylabel("Feature 2")
-plt.title("Logistic Regression")
-plt.show()
+# Train once when the module is imported
+_model, _scaler = train_model()
+
+
+def get_prediction(age, gender, vaccination_status, fever, cough, fatigue,
+                   shortness_of_breath, loss_of_smell, headache, diabetes,
+                   hypertension, heart_disease, asthma, cancer):
+    features = np.array([[age, gender, vaccination_status, fever, cough, fatigue,
+                           shortness_of_breath, loss_of_smell, headache, diabetes,
+                           hypertension, heart_disease, asthma, cancer]])
+    features_scaled = _scaler.transform(features)
+    prediction = _model.predict(features_scaled)
+    return float(prediction[0])
