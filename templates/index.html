@@ -22,13 +22,15 @@
             style="width:100%; border-radius:16px; object-fit:cover; max-height:280px; box-shadow:0 8px 32px rgba(0,0,0,0.35);">
     </div>
 
+    <div class="top-menu">
+
     <!-- Use Cases -->
     <div class="nav-section">
         <button class="nav-toggle" onclick="toggle(this, 'menuCasos')">
-            <span class="icon"></span>
             Machine Learning Use Cases
             <span class="arrow">▼</span>
         </button>
+
         <div class="nav-menu" id="menuCasos">
             <a href="/use-case1">Use Case 1 — House Price Prediction</a>
             <a href="/use-case2">Use Case 2 — Anti-Procrastination App</a>
@@ -40,29 +42,25 @@
     <!-- Supervised ML -->
     <div class="nav-section">
         <button class="nav-toggle" onclick="toggle(this, 'menuSupervisado')">
-            <span class="icon"></span>
             Supervised Machine Learning
             <span class="arrow">▼</span>
         </button>
+
         <div class="nav-menu" id="menuSupervisado">
 
-            <!-- Linear Regression sub-section -->
             <div class="nav-sub-section">
                 <button class="nav-sub-toggle" onclick="toggleSub('menuLinearRegresion')">
-                    Linear Regression <span style="margin-left:auto; font-size:.75rem;">▸</span>
+                    Linear Regression ▸
                 </button>
                 <div class="nav-sub-menu" id="menuLinearRegresion">
                     <a href="/linear-regression-concepts">Basic Concepts</a>
-                    <a href="/linear-regression-app">Application — Grade Predictor</a>
-                    <a href="/salary-predictor">Application — Salary Predictor</a>
+                    <a href="/linear-regression-app">Application</a>
                 </div>
             </div>
 
-
-            <!-- Logistic Regression sub-section -->
             <div class="nav-sub-section">
                 <button class="nav-sub-toggle" onclick="toggleSub('menuLogisticRegresion')">
-                    Logistic Regression <span style="margin-left:auto; font-size:.75rem;">▸</span>
+                    Logistic Regression ▸
                 </button>
                 <div class="nav-sub-menu" id="menuLogisticRegresion">
                     <a href="/logistic-regression-concepts">Basic Concepts</a>
@@ -70,20 +68,10 @@
                 </div>
             </div>
 
-            <!-- Assigned Classification Model sub-section -->
-            <div class="nav-sub-section">
-                <button class="nav-sub-toggle" onclick="toggleSub('menuAssignedClassification')">
-                    Assigned Classification Model <span style="margin-left:auto; font-size:.75rem;">▸</span>
-                </button>
-                <div class="nav-sub-menu" id="menuAssignedClassification">
-                    <a href="/assigned-classification-concepts">Basic Concepts</a>
-                    <a href="/assigned-classification-app">Application</a>
-                </div>
-            </div>
-
         </div>
     </div>
 
+</div>
     <!-- Team -->
     <div class="team-container">
         <h3 class="team-title">Team Members</h3>
