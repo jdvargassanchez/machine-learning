@@ -46,5 +46,13 @@ def salary_app():
         prediction = round(float(raw), 2)
     return render_template('salary_app.html', prediction=prediction)
 
+@app.route('/qda_concepts')
+def qda_concepts():
+    return render_template('qda_concepts.html')
+
+@app.route('/qda-example')
+def qda_example():
+    return render_template('qda_example.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
