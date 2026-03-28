@@ -16,6 +16,10 @@ def use_case1():
 def linear_concepts():
     return render_template('linear_concepts.html')
 
+@app.route('/logistic-regression-concepts')
+def logistic_concepts():
+    return render_template('logistic_concepts.html')
+
 @app.route('/linear-regression-app', methods=['GET', 'POST'])
 def linear_app():
     result = None
