@@ -503,3 +503,180 @@ body.grades-page {
     font-size: .9rem;
     text-align: center;
 }
+
+/* ══════════════════════════════════════════════
+   QDA CONCEPTS PAGE
+══════════════════════════════════════════════ */
+.qda-hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.qda-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.qda-mini-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    transition: transform .25s ease, box-shadow .25s ease;
+    color: var(--text-primary);
+}
+
+.qda-mini-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px rgba(0,0,0,0.22);
+}
+
+.qda-mini-card i {
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+    color: #ffffff;
+}
+
+.qda-mini-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.qda-mini-card p {
+    color: #f1f3f5;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.qda-collapsible-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+}
+
+.qda-accordion .accordion-button {
+    font-weight: 700;
+    padding: 1.1rem 1.25rem;
+    background: rgba(255,255,255,0.10);
+    color: #ffffff !important;
+    border: none;
+}
+
+.qda-accordion .accordion-button:not(.collapsed) {
+    box-shadow: none;
+    background: rgba(255,255,255,0.14);
+    color: #ffffff !important;
+}
+
+.qda-accordion .accordion-button:focus {
+    box-shadow: none;
+    border-color: transparent;
+}
+
+.qda-accordion .accordion-item {
+    background: transparent;
+    border: none;
+}
+
+.qda-accordion .accordion-body {
+    color: #f1f3f5;
+    background: rgba(255,255,255,0.04);
+    padding: 1.25rem 1.25rem;
+}
+
+.qda-accordion .accordion-body p,
+.qda-accordion .accordion-body li,
+.qda-accordion .accordion-body h5,
+.qda-accordion .accordion-body strong,
+.qda-accordion .accordion-body span {
+    color: #f1f3f5 !important;
+}
+
+.qda-tag-pill {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+    margin: 4px 6px 0 0;
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+}
+
+.btn-soft {
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-weight: 600;
+}
+
+.qda-quick-summary {
+    margin-top: 26px;
+    padding: 22px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--text-primary);
+}
+
+.qda-quick-summary p {
+    color: #f1f3f5;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+.qda-future-link-box {
+    margin-top: 40px;
+    padding: 24px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.qda-future-link-box p {
+    color: #f1f3f5;
+    line-height: 1.8;
+}
+
+.qda-image-wrapper {
+    text-align: center;
+    margin: 20px auto 0;
+    max-width: 760px;
+    padding: 0 16px;
+}
+
+.qda-image-wrapper img {
+    width: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+    max-height: 280px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+}
+
+/* Better text visibility inside boxes for this page */
+.content-card .box.qda-box p,
+.content-card .box.qda-box li,
+.content-card .box.qda-box h5,
+.content-card .box.qda-box strong,
+.content-card .box.qda-box span {
+    color: #f1f3f5 !important;
+}
+
+.content-card .box.qda-box ul {
+    color: #f1f3f5 !important;
+}
+
+.content-card .box.qda-box {
+    background: rgba(108,99,255,.10);
+}
