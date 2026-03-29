@@ -67,3 +67,11 @@ def qda_example():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/logistic-regression-example', methods=['GET', 'POST'])
+def logistic_example():
+    prediction = None
+    if request.method == 'POST':
+        prediction = logisticregressionexample.handle_form(request.form)
+    return render_template('logistic_example.html', prediction=prediction)
+    
