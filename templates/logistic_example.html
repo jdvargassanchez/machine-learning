@@ -1,15 +1,12 @@
-{% extends "navegation_menu.html" %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Logistic Regression Example{% endblock %}
-
-{% block content %}
-
-<div class="grades-wrapper">
-
-    <h1>Logistic Regression Example</h1>
-    <p style="text-align:center; color:var(--text-secondary); margin-bottom:20px; font-size:.95rem;">
-        Enter study hours to estimate a student's final grade using Linear Regression.
-    </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logistic Regression-application</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <!-- Illustrative image -->
     <div style="text-align:center; margin-bottom:28px;">
@@ -47,14 +44,9 @@
         <p>Machine Learning Flask Project</p>
     </div>
 
-</div>
+    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ url_for('static', filename='js/prediccion.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/prediccion.js') }}"></script>
 
-{%endblock %}
-
-<!-- interative butt    on -->
-<div style="margin-top: 40px; text-align: center; padding: 30px;">
-    <a class="btn-predict" href="/logistic-regression-app">app →</a>
-</div>
+    {%endblock %}
