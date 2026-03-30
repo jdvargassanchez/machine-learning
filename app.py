@@ -65,13 +65,12 @@ def qda_concepts():
 def qda_example():
     return render_template('qda_example.html')
 
-
 @app.route('/logistic-regression-example', methods=['GET', 'POST'])
 def logistic_example():
-    prediction = None
+    result = None
     if request.method == 'POST':
-        prediction = logisticregressionexample.handle_form(request.form)
-    return render_template('logisticregressionexample.html', prediction=prediction) 
+        result = logisticregressionexample.handle_form(request.form)
+    return render_template('logisticregressionexample.html', result=result)
 
 if __name__ == '__main__':
     app.run(debug=True)

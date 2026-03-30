@@ -12,7 +12,7 @@
 
         <form method="post">
 
-            <input name="age" placeholder="Age" required>
+            <input type="number" name="age" placeholder="Age" required>
 
             <select name="gender">
                 <option value="Male">Male</option>
@@ -20,32 +20,32 @@
             </select>
 
             <select name="vaccination_status">
-                <option value="Yes">Vaccinated</option>
-                <option value="No">Not Vaccinated</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
             </select>
 
-            <input name="fever" placeholder="Fever (0/1)" required>
-            <input name="cough" placeholder="Cough (0/1)" required>
-            <input name="fatigue" placeholder="Fatigue (0/1)" required>
-            <input name="shortness_of_breath" placeholder="Breathing Issues (0/1)" required>
-            <input name="loss_of_smell" placeholder="Loss of Smell (0/1)" required>
-            <input name="headache" placeholder="Headache (0/1)" required>
-            <input name="diabetes" placeholder="Diabetes (0/1)" required>
-            <input name="hypertension" placeholder="Hypertension (0/1)" required>
-            <input name="heart_disease" placeholder="Heart Disease (0/1)" required>
-            <input name="asthma" placeholder="Asthma (0/1)" required>
-            <input name="cancer" placeholder="Cancer (0/1)" required>
+            <input type="number" name="fever" placeholder="Fever (0/1)" required>
+            <input type="number" name="cough" placeholder="Cough (0/1)" required>
+            <input type="number" name="fatigue" placeholder="Fatigue (0/1)" required>
+            <input type="number" name="shortness_of_breath" placeholder="Breathing (0/1)" required>
+            <input type="number" name="loss_of_smell" placeholder="Loss of Smell (0/1)" required>
+            <input type="number" name="headache" placeholder="Headache (0/1)" required>
+            <input type="number" name="diabetes" placeholder="Diabetes (0/1)" required>
+            <input type="number" name="hypertension" placeholder="Hypertension (0/1)" required>
+            <input type="number" name="heart_disease" placeholder="Heart Disease (0/1)" required>
+            <input type="number" name="asthma" placeholder="Asthma (0/1)" required>
+            <input type="number" name="cancer" placeholder="Cancer (0/1)" required>
 
-            <button type="submit" class="btn-predict">Predict →</button>
+            <button type="submit">Predict</button>
 
         </form>
-        {% if result %}
-        <div class="result-box">
+
+        {% if result is not none %}
+        <div>
             <h2>Prediction: {{ result.prediction }}</h2>
             <p>Probability: {{ (result.probability * 100) | round(2) }}%</p>
         </div>
         {% endif %}
-
 
     </div>
 
