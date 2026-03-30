@@ -5,97 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QDA | Supervised Learning</title>
 
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- TU CSS GLOBAL -->
     <link rel="stylesheet" href="static/css/style.css">
-
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="inner-page">
 
-    <!-- HEADER -->
-    <div class="page-header">
-        <h1>Quadratic Discriminant Analysis</h1>
-        <span class="badge-tag">Supervised Learning · Classification</span>
+<div class="page-header">
+    <h1>Quadratic Discriminant Analysis</h1>
+    <span class="badge-tag">Supervised Learning · Classification</span>
+</div>
+
+<div class="content-card">
+
+    <!-- EXPLANATION -->
+    <h2 class="section-title">How QDA Works</h2>
+    <div class="box">
+        <p>
+            <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> is a classification algorithm 
+            that models each class using a Gaussian distribution. Unlike linear models, QDA allows 
+            each class to have its own covariance matrix, producing <strong>curved decision boundaries</strong>.
+        </p>
+
+        <ul>
+            <li>Compute mean (μ) for each class</li>
+            <li>Compute covariance matrix (Σ)</li>
+            <li>Evaluate discriminant function</li>
+        </ul>
+
+        <div class="formula">
+            δₖ(x) = -½ ln|Σₖ| - ½ (x - μₖ)ᵀ Σₖ⁻¹ (x - μₖ)
+        </div>
     </div>
 
-    <!-- CONTENT -->
-    <div class="content-card">
+    <!-- DATASET -->
+    <h2 class="section-title">Dataset Explanation</h2>
+    <div class="box">
+        <p>
+            The dataset contains two clearly separated groups:
+        </p>
+        <ul>
+            <li><strong>Class A 🔵:</strong> Points concentrated in the lower-left region</li>
+            <li><strong>Class B 🔴:</strong> Points concentrated in the upper-right region</li>
+        </ul>
 
-        <!-- EXPLANATION -->
-
-            <p><strong>How it works:</strong></p>
-            <ul>
-                <li>Compute the mean vector (μ) for each class</li>
-                <li>Compute the covariance matrix (Σ)</li>
-                <li>Evaluate the discriminant function</li>
-            </ul>
-
-            <div class="formula">
-                δₖ(x) = -½ ln|Σₖ| - ½ (x - μₖ)ᵀ Σₖ⁻¹ (x - μₖ)
-            </div>
-        </div>
-
-        <!-- DATASET -->
-        <h2 class="section-title">Dataset Description</h2>
-        <div class="box">
-            <p>
-                This example uses a simple 2D dataset with two classes:
-            </p>
-            <ul>
-                <li><strong>Class A 🔵:</strong> Lower-value cluster</li>
-                <li><strong>Class B 🔴:</strong> Higher-value cluster</li>
-            </ul>
-        </div>
-
-        <!-- MAIN -->
-        <h2 class="section-title">Interactive Example</h2>
-
-        <div class="row g-4">
-
-            <!-- CHART -->
-            <div class="col-lg-7">
-                <div class="box">
-                    <canvas id="qdaChart"></canvas>
-                </div>
-            </div>
-
-            <!-- PANEL -->
-            <div class="col-lg-5">
-                <div class="box">
-
-                    <h5 class="mb-3">🎯 Predict Class</h5>
-
-                    <input type="number" id="inputX" class="form-control mb-2" placeholder="Enter X">
-                    <input type="number" id="inputY" class="form-control mb-2" placeholder="Enter Y">
-
-                    <button class="btn btn-primary w-100 mt-2" onclick="predictClass()">Predict</button>
-
-                    <div class="result-box mt-3">
-                        <h2 id="result">Class: --</h2>
-                    </div>
-
-                    <div class="mt-2 text-center text-secondary small" id="details"></div>
-
-                    <hr>
-
-                    <h6>Model Parameters</h6>
-                    <div id="modelInfo" class="text-secondary small"></div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-            <p>Machine Learning App — QDA Example</p>
-        </div>
-
+        <p>
+            QDA learns the distribution of each group and decides which class a new point belongs to 
+            based on probability.
+        </p>
     </div>
+
+    <!-- DATA TABLE -->
+    <h2 class="section-title">Training Dataset</h2>
+    <div class="box">
+        <table class="table table-dark table-sm text-center">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>X</th>
+                    <th>Y</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- MAIN -->
+    <h2 class="section-title">Interactive Example</h2>
+
+    <div class="row g-4">
+
+        <!-- CHART -->
+        <div class="col-lg-7">
+            <div class="box">
+                <canvas id="qdaChart"></canvas>
+            </div>
+        </div>
+
+        <!-- PANEL -->
+        <div class="col-lg-5">
+            <div class="box">
+
+                <h5>🎯 Predict Class</h5>
+
+                <input type="number" id="inputX" class="form-control mb-2" placeholder="Enter X">
+                <input type="number" id="inputY" class="form-control mb-2" placeholder="Enter Y">
+
+                <button class="btn btn-primary w-100 mt-2" onclick="predictClass()">Predict</button>
+
+                <div class="result-box mt-3">
+                    <h2 id="result">Class: --</h2>
+                </div>
+
+                <div id="details" class="text-secondary text-center small"></div>
+
+                <hr>
+
+                <h6>Model Parameters</h6>
+                <div id="modelInfo" class="text-secondary small"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Machine Learning App — QDA Example</p>
+    </div>
+
+</div>
 
 <script>
 /* ===============================
@@ -108,6 +126,21 @@ const classA = [
 const classB = [
     {x:6, y:5}, {x:7, y:7}, {x:8, y:6}, {x:7.5, y:5.5}
 ];
+
+/* ===============================
+   FILL TABLE
+================================ */
+const tbody = document.getElementById("tableBody");
+
+classA.forEach(p=>{
+    let row = tbody.insertRow();
+    row.innerHTML = `<td>🔵 A</td><td>${p.x}</td><td>${p.y}</td>`;
+});
+
+classB.forEach(p=>{
+    let row = tbody.insertRow();
+    row.innerHTML = `<td>🔴 B</td><td>${p.x}</td><td>${p.y}</td>`;
+});
 
 /* ===============================
    MATH FUNCTIONS
@@ -220,8 +253,16 @@ new Chart(document.getElementById("qdaChart"),{
     type:"scatter",
     data:{
         datasets:[
-            {label:"Class A",data:classA,backgroundColor:"#6c63ff"},
-            {label:"Class B",data:classB,backgroundColor:"#a78bfa"}
+            {
+                label:"Class A",
+                data:classA,
+                backgroundColor:"blue"
+            },
+            {
+                label:"Class B",
+                data:classB,
+                backgroundColor:"red"
+            }
         ]
     }
 });
