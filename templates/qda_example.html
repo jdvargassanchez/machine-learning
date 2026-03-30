@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QDA | Supervised Learning</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="inner-page">
+
+<div class="page-header">
+    <h1>Quadratic Discriminant Analysis</h1>
+    <span class="badge-tag">Supervised Learning · Classification</span>
+</div>
+
+<div class="content-card">
+
+    <!-- EXPLANATION -->
+    <h2 class="section-title">How QDA Works</h2>
+    <div class="box">
+        <p>
+            <span class="highlight">Quadratic Discriminant Analysis (QDA)</span> is a classification algorithm 
+            that models each class using a Gaussian distribution. Unlike linear models, QDA allows 
+            each class to have its own covariance matrix, producing <strong>curved decision boundaries</strong>.
+        </p>
+
+        <ul>
+            <li>Compute mean (μ) for each class</li>
+            <li>Compute covariance matrix (Σ)</li>
+            <li>Evaluate discriminant function</li>
+        </ul>
+
+        <div class="formula">
+            δₖ(x) = -½ ln|Σₖ| - ½ (x - μₖ)ᵀ Σₖ⁻¹ (x - μₖ)
+        </div>
+    </div>
+
+    <!-- DATASET -->
+    <h2 class="section-title">Dataset Explanation</h2>
+    <div class="box">
+        <p>
+            The dataset contains two clearly separated groups:
+        </p>
+        <ul>
+            <li><strong>Class A 🔵:</strong> Points concentrated in the lower-left region</li>
+            <li><strong>Class B 🔴:</strong> Points concentrated in the upper-right region</li>
+        </ul>
+
+        <p>
+            QDA learns the distribution of each group and decides which class a new point belongs to 
+            based on probability.
+        </p>
+    </div>
+
+    <!-- DATA TABLE -->
+    <h2 class="section-title">Training Dataset</h2>
+    <div class="box">
+        <table class="table table-dark table-sm text-center">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>X</th>
+                    <th>Y</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+
+    <!-- MAIN -->
+    <h2 class="section-title">Interactive Example</h2>
+
+    <div class="row g-4">
+
+        <!-- CHART -->
+        <div class="col-lg-7">
+            <div class="box">
+                <canvas id="qdaChart"></canvas>
+            </div>
+        </div>
+
+        <!-- PANEL -->
+        <div class="col-lg-5">
+            <div class="box">
+
+                <h5>🎯 Predict Class</h5>
+
+                <input type="number" id="inputX" class="form-control mb-2" placeholder="Enter X">
+                <input type="number" id="inputY" class="form-control mb-2" placeholder="Enter Y">
+
+                <button class="btn btn-primary w-100 mt-2" onclick="predictClass()">Predict</button>
+
+                <div class="result-box mt-3">
+                    <h2 id="result">Class: --</h2>
+                </div>
+
+                <div id="details" class="text-secondary text-center small"></div>
+
+                <hr>
+
+                <h6>Model Parameters</h6>
+                <div id="modelInfo" class="text-secondary small"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Machine Learning App — QDA Example</p>
+    </div>
+
+</div>
+
+<script>
+/* ===============================
+   DATASET
+================================ */
+const classA = [
+    {x:1, y:2}, {x:2, y:3}, {x:3, y:3}, {x:2.5, y:2.7}
+];
+
+const classB = [
+    {x:6, y:5}, {x:7, y:7}, {x:8, y:6}, {x:7.5, y:5.5}
+];
+
+/* ===============================
+   FILL TABLE
+================================ */
+const tbody = document.getElementById("tableBody");
+
+classA.forEach(p=>{
+    let row = tbody.insertRow();
+    row.innerHTML = `<td>🔵 A</td><td>${p.x}</td><td>${p.y}</td>`;
+});
+
+classB.forEach(p=>{
+    let row = tbody.insertRow();
+    row.innerHTML = `<td>🔴 B</td><td>${p.x}</td><td>${p.y}</td>`;
+});
+
+/* ===============================
+   MATH FUNCTIONS
+================================ */
+function mean(points){
+    let mx=0,my=0;
+    points.forEach(p=>{mx+=p.x; my+=p.y;});
+    return [mx/points.length,my/points.length];
+}
+
+function covariance(points,mu){
+    let cov=[[0,0],[0,0]];
+    points.forEach(p=>{
+        let dx=p.x-mu[0];
+        let dy=p.y-mu[1];
+        cov[0][0]+=dx*dx;
+        cov[0][1]+=dx*dy;
+        cov[1][0]+=dy*dx;
+        cov[1][1]+=dy*dy;
+    });
+    return cov.map(r=>r.map(v=>v/(points.length-1)));
+}
+
+function determinant(m){
+    return m[0][0]*m[1][1]-m[0][1]*m[1][0];
+}
+
+function inverse(m){
+    let det=determinant(m);
+    if(det===0) det=0.0001;
+    return [
+        [m[1][1]/det,-m[0][1]/det],
+        [-m[1][0]/det,m[0][0]/det]
+    ];
+}
+
+function subtract(a,b){
+    return [a[0]-b[0],a[1]-b[1]];
+}
+
+function multiply(v,m){
+    return [
+        v[0]*m[0][0]+v[1]*m[1][0],
+        v[0]*m[0][1]+v[1]*m[1][1]
+    ];
+}
+
+function dot(a,b){
+    return a[0]*b[0]+a[1]*b[1];
+}
+
+/* ===============================
+   QDA
+================================ */
+function discriminant(x,mu,sigma){
+    let inv=inverse(sigma);
+    let det=determinant(sigma);
+    if(det<=0) det=0.0001;
+
+    let diff=subtract(x,mu);
+    let term=dot(multiply(diff,inv),diff);
+
+    return -0.5*Math.log(det)-0.5*term;
+}
+
+/* ===============================
+   TRAINING
+================================ */
+const muA=mean(classA);
+const muB=mean(classB);
+
+const sigmaA=covariance(classA,muA);
+const sigmaB=covariance(classB,muB);
+
+/* ===============================
+   PREDICTION
+================================ */
+function predictClass(){
+    let x=parseFloat(inputX.value);
+    let y=parseFloat(inputY.value);
+
+    if(isNaN(x)||isNaN(y)){
+        result.innerText="Enter valid numbers";
+        return;
+    }
+
+    let point=[x,y];
+
+    let gA=discriminant(point,muA,sigmaA);
+    let gB=discriminant(point,muB,sigmaB);
+
+    let label=gA>gB ? "Class A 🔵" : "Class B 🔴";
+
+    result.innerText=label;
+    details.innerText=`gA=${gA.toFixed(3)} | gB=${gB.toFixed(3)}`;
+}
+
+/* ===============================
+   INFO
+================================ */
+modelInfo.innerText=`
+μA = (${muA.map(v=>v.toFixed(2))})
+μB = (${muB.map(v=>v.toFixed(2))})
+`;
+
+/* ===============================
+   CHART
+================================ */
+new Chart(document.getElementById("qdaChart"),{
+    type:"scatter",
+    data:{
+        datasets:[
+            {
+                label:"Class A",
+                data:classA,
+                backgroundColor:"blue"
+            },
+            {
+                label:"Class B",
+                data:classB,
+                backgroundColor:"red"
+            }
+        ]
+    }
+});
+</script>
+
+</body>
+</html>
