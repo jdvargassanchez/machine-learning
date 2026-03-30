@@ -957,3 +957,186 @@ body.grades-page {
     width: fit-content;
     
 }
+
+/* ==========================================
+   LOGISTIC REGRESSION FORM - DARK THEME
+========================================== */
+
+.model-info {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-bottom: 28px;
+    box-shadow: var(--shadow);
+}
+
+.model-info h2 {
+    color: var(--accent-2);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.model-info p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 14px;
+    text-align: justify;
+}
+
+.prediction-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: .9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 4px;
+}
+
+/* INPUTS Y SELECTS */
+.prediction-form input[type="number"],
+.prediction-form input[type="text"],
+.prediction-form input[type="email"],
+.custom-select {
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: border-color .25s, box-shadow .25s, transform .2s;
+    outline: none;
+}
+
+/* PLACEHOLDERS */
+.prediction-form input::placeholder {
+    color: #6b7280;
+}
+
+/* FOCUS */
+.prediction-form input:focus,
+.custom-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+    transform: translateY(-1px);
+}
+
+/* SELECT PERSONALIZADO */
+.custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    padding-right: 46px;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%23a78bfa' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'></path></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+}
+
+/* OPCIONES DEL SELECT */
+.custom-select option {
+    background: var(--bg-card);
+    color: var(--text-primary);
+}
+
+/* BOTÓN */
+.prediction-form .btn-predict {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: opacity .25s, transform .2s, box-shadow .25s;
+    box-shadow: 0 4px 18px rgba(108, 99, 255, .4);
+}
+
+.prediction-form .btn-predict:hover {
+    opacity: .95;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(108, 99, 255, .55);
+}
+
+/* RESULTADO */
+.logistic-result-box {
+    margin-top: 28px;
+    padding: 22px;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(16,185,129,.10), rgba(108,99,255,.10));
+    border: 1px solid rgba(167,139,250,0.25);
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+}
+
+.logistic-result-box h2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.logistic-result-box p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.logistic-result-box strong {
+    color: var(--accent-2);
+}
+
+/* PEQUEÑO EFECTO HOVER EN CAMPOS */
+.prediction-form input:hover,
+.custom-select:hover {
+    border-color: rgba(167,139,250,0.45);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .model-info {
+        padding: 22px 18px;
+    }
+
+    .logistic-result-box {
+        padding: 18px;
+    }
+}
+
+.covid-positive {
+    background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(108,99,255,.10));
+    border: 1px solid rgba(239,68,68,.35);
+}
+
+.covid-positive h2 {
+    color: #f87171;
+}
+
+.covid-negative {
+    background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(108,99,255,.10));
+    border: 1px solid rgba(16,185,129,.35);
+}
+
+.covid-negative h2 {
+    color: #34d399;
+}

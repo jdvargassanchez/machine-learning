@@ -7,71 +7,131 @@
 <div class="grades-wrapper">
 
     <h1>Logistic Regression - Health Predictor</h1>
-    <hr style="margin:40px 0;">
+
+    <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
 
     <div class="model-info">
-
         <h2>How the Model Works</h2>
 
         <p>
-            This application uses a Logistic Regression model to predict whether a patient is likely to be hospitalized
-            based on their symptoms and medical conditions, based in the dataset "health_dataset.csv for determining
-            the probability of hospitalization of a patient for covid 19".
+            This application uses a Logistic Regression model to predict whether a patient is likely to have COVID-19
+            based on symptoms and medical conditions, using the dataset
+            "health_dataset.csv for determining the probability of hospitalization of a patient for COVID-19".
         </p>
 
         <p>
-            The model considers factors such as age, gender, vaccination status, and symptoms like fever, cough, and
-            fatigue,
-            as well as pre-existing conditions.
+            The model considers factors such as age, gender, vaccination status, symptoms like fever, cough, fatigue,
+            and pre-existing medical conditions.
         </p>
 
         <p>
-            It outputs a probability and classifies the patient as high or low risk.
+            It outputs a probability and classifies the patient according to the predicted result.
         </p>
-
     </div>
 
     <div class="predict-card">
 
-        <form method="post">
+        <form method="post" class="prediction-form">
 
-            <input type="number" name="age" placeholder="Age" required>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" placeholder="Enter age" required>
+            </div>
 
-            <select name="gender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
+            <!-- Gender -->
+            <div class="form-group">
+                <label for="gender">Select Your Gender</label>
+                <select name="gender" id="gender" class="custom-select" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
 
-            <select name="vaccination_status">
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
+            <!-- Vaccination Status -->
+            <div class="form-group">
+                <label for="vaccination_status">Vaccination Status</label>
+                <select name="vaccination_status" id="vaccination_status" class="custom-select" required>
+                    <option value="" disabled selected>Choose an option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+            </div>
 
-            <input type="number" name="fever" placeholder="Fever (0/1)" required>
-            <input type="number" name="cough" placeholder="Cough (0/1)" required>
-            <input type="number" name="fatigue" placeholder="Fatigue (0/1)" required>
-            <input type="number" name="shortness_of_breath" placeholder="Breathing (0/1)" required>
-            <input type="number" name="loss_of_smell" placeholder="Loss of Smell (0/1)" required>
-            <input type="number" name="headache" placeholder="Headache (0/1)" required>
-            <input type="number" name="diabetes" placeholder="Diabetes (0/1)" required>
-            <input type="number" name="hypertension" placeholder="Hypertension (0/1)" required>
-            <input type="number" name="heart_disease" placeholder="Heart Disease (0/1)" required>
-            <input type="number" name="asthma" placeholder="Asthma (0/1)" required>
-            <input type="number" name="cancer" placeholder="Cancer (0/1)" required>
+            <div class="form-group">
+                <label for="fever">Fever</label>
+                <input type="number" name="fever" id="fever" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
 
-            <button type="submit">Predict</button>
+            <div class="form-group">
+                <label for="cough">Cough</label>
+                <input type="number" name="cough" id="cough" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
 
+            <div class="form-group">
+                <label for="fatigue">Fatigue</label>
+                <input type="number" name="fatigue" id="fatigue" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="shortness_of_breath">Shortness of Breath</label>
+                <input type="number" name="shortness_of_breath" id="shortness_of_breath" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loss_of_smell">Loss of Smell</label>
+                <input type="number" name="loss_of_smell" id="loss_of_smell" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="headache">Headache</label>
+                <input type="number" name="headache" id="headache" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="diabetes">Diabetes</label>
+                <input type="number" name="diabetes" id="diabetes" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hypertension">Hypertension</label>
+                <input type="number" name="hypertension" id="hypertension" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="heart_disease">Heart Disease</label>
+                <input type="number" name="heart_disease" id="heart_disease" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="asthma">Asthma</label>
+                <input type="number" name="asthma" id="asthma" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cancer">Cancer</label>
+                <input type="number" name="cancer" id="cancer" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+            </div>
+
+            <button type="submit" class="btn-predict">Predict</button>
         </form>
 
         {% if result is not none %}
-        <div>
-            <h2>Prediction: {{ result.prediction }}</h2>
-            <p>Probability: {{ (result.probability * 100) | round(2) }}%</p>
+        <div class="result-box logistic-result-box {% if result.prediction == 1 %}covid-positive{% else %}covid-negative{% endif %}">
+            <h2>
+                Prediction:
+                {% if result.prediction == 1 %}
+                    Has COVID-19
+                {% else %}
+                    Does Not Have COVID-19
+                {% endif %}
+            </h2>
+
+            <p><strong>Probability:</strong> {{ (result.probability * 100) | round(2) }}%</p>
         </div>
         {% endif %}
 
     </div>
-
 </div>
 
 {% endblock %}
