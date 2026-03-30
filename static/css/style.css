@@ -957,3 +957,14 @@ body.grades-page {
     width: fit-content;
     
 }
+
+.logistic-header .qda-hero-actionsD {
+    display: flex;
+    flex-direction: row;
+    gap: 0;
+    justify-content: center;
+}
+
+.logistic-header .qda-hero-actionsD .btn {
+    margin: 0;
+}
