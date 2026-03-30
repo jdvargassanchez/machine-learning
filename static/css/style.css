@@ -951,3 +951,8 @@ body.grades-page {
         padding: 24px 20px;
     }
 }
+.page-header a.btn {
+    display: block;
+    margin: 15px auto 0 auto;
+    width: fit-content;
+}
