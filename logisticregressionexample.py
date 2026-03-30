@@ -73,19 +73,19 @@ def get_prediction(input_data: dict):
 def handle_form(form):
     input_data = {
         "age": float(form['age']),
-        "gender": form['gender'],
-        "vaccination_status": form['vaccination_status'],
-        "fever": float(form['fever']),
-        "cough": float(form['cough']),
-        "fatigue": float(form['fatigue']),
-        "shortness_of_breath": float(form['shortness_of_breath']),
-        "loss_of_smell": float(form['loss_of_smell']),
-        "headache": float(form['headache']),
-        "diabetes": float(form['diabetes']),
-        "hypertension": float(form['hypertension']),
-        "heart_disease": float(form['heart_disease']),
-        "asthma": float(form['asthma']),
-        "cancer": float(form['cancer'])
+        "gender":form['gender'],
+        "vaccination_status":form['vaccination_status'],
+        "fever":float(form['fever']),
+        "cough":float(form['cough']),
+        "fatigue":float(form['fatigue']),
+        "shortness_of_breath":float(form['shortness_of_breath']),
+        "loss_of_smell":float(form['loss_of_smell']),
+        "headache":float(form['headache']),
+        "diabetes":float(form['diabetes']),
+        "hypertension":float(form['hypertension']),
+        "heart_disease":float(form['heart_disease']),
+        "asthma":float(form['asthma']),
+        "cancer":float(form['cancer'])  
     }
 
     return get_prediction(input_data)

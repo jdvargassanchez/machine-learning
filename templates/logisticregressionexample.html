@@ -1,60 +1,77 @@
 {% extends "navegation_menu.html" %}
 
-{% block title %}Logistic Regression Example{% endblock %}
+{% block title %}Logistic Regression App{% endblock %}
 
 {% block content %}
 
+<div class="grades-wrapper">
 
-<!DOCTYPE html>
-<html lang="en">
+    <h1>Logistic Regression - Health Predictor</h1>
+    <hr style="margin:40px 0;">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logistic Regression-application</title>
+    <div class="model-info">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <h2>How the Model Works</h2>
 
-    <!-- Illustrative image -->
-    <div style="text-align:center; margin-bottom:28px;">
-        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&fit=crop&auto=format"
-            alt="Student studying — grade predictor"
-            style="width:100%; max-width:560px; border-radius:14px; object-fit:cover; max-height:220px; box-shadow:0 6px 28px rgba(0,0,0,0.3);">
+        <p>
+            This application uses a Logistic Regression model to predict whether a patient is likely to be hospitalized
+            based on their symptoms and medical conditions, based in the dataset "health_dataset.csv for determining
+            the probability of hospitalization of a patient for covid 19".
+        </p>
+
+        <p>
+            The model considers factors such as age, gender, vaccination status, and symptoms like fever, cough, and
+            fatigue,
+            as well as pre-existing conditions.
+        </p>
+
+        <p>
+            It outputs a probability and classifies the patient as high or low risk.
+        </p>
+
     </div>
 
     <div class="predict-card">
 
-        <form id="formularioPrediccion" method="post">
+        <form method="post">
 
-            <label for="horas">Study Hours</label>
-            <input type="number" id="horas" name="hours" min="0" step="0.5" placeholder="e.g. 5" required>
+            <input type="number" name="age" placeholder="Age" required>
 
-            <button type="submit" class="btn-predict">Predict Grade →</button>
+            <select name="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+            <select name="vaccination_status">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <input type="number" name="fever" placeholder="Fever (0/1)" required>
+            <input type="number" name="cough" placeholder="Cough (0/1)" required>
+            <input type="number" name="fatigue" placeholder="Fatigue (0/1)" required>
+            <input type="number" name="shortness_of_breath" placeholder="Breathing (0/1)" required>
+            <input type="number" name="loss_of_smell" placeholder="Loss of Smell (0/1)" required>
+            <input type="number" name="headache" placeholder="Headache (0/1)" required>
+            <input type="number" name="diabetes" placeholder="Diabetes (0/1)" required>
+            <input type="number" name="hypertension" placeholder="Hypertension (0/1)" required>
+            <input type="number" name="heart_disease" placeholder="Heart Disease (0/1)" required>
+            <input type="number" name="asthma" placeholder="Asthma (0/1)" required>
+            <input type="number" name="cancer" placeholder="Cancer (0/1)" required>
+
+            <button type="submit">Predict</button>
 
         </form>
 
-        <p id="mensajeError" class="error-msg" style="display:none;"></p>
-
         {% if result is not none %}
-        <div class="result-box">
-            <h2>Estimated Grade: {{ result }}</h2>
+        <div>
+            <h2>Prediction: {{ result.prediction }}</h2>
+            <p>Probability: {{ (result.probability * 100) | round(2) }}%</p>
         </div>
         {% endif %}
 
     </div>
 
-    <div style="text-align:center; margin-top:28px;">
-        <a class="back-link" href="/">Back to Home</a>
-    </div>
+</div>
 
-    <div class="footer">
-        <p>Machine Learning Flask Project</p>
-    </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/prediccion.js') }}"></script>
-
-    {%endblock %}
+{% endblock %}
