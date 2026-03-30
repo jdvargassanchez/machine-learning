@@ -71,7 +71,7 @@ def logistic_example():
     prediction = None
     if request.method == 'POST':
         prediction = logisticregressionexample.handle_form(request.form)
-    return render_template('logistic_example.html', prediction=prediction)
+    return render_template('logisticregressionexample.html', prediction=prediction) 
 
 if __name__ == '__main__':
     app.run(debug=True)
