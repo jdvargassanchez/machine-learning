@@ -8,10 +8,15 @@
 
     <h1>Logistic Regression - Health Predictor</h1>
 
+
     <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
 
     <div class="model-info">
         <h2>How the Model Works</h2>
+        <img src="{{ url_for('static', filename='images/logistic_image.jpg') }}" alt="Logistic Regression"
+            style="width:300px; display:block; margin:20px auto;">
+
+
 
         <p>
             This application uses a Logistic Regression model to predict whether a patient is likely to have COVID-19
@@ -75,32 +80,38 @@
 
             <div class="form-group">
                 <label for="shortness_of_breath">Shortness of Breath</label>
-                <input type="number" name="shortness_of_breath" id="shortness_of_breath" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="shortness_of_breath" id="shortness_of_breath" placeholder="0 = No, 1 = Yes"
+                    min="0" max="1" required>
             </div>
 
             <div class="form-group">
                 <label for="loss_of_smell">Loss of Smell</label>
-                <input type="number" name="loss_of_smell" id="loss_of_smell" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="loss_of_smell" id="loss_of_smell" placeholder="0 = No, 1 = Yes" min="0"
+                    max="1" required>
             </div>
 
             <div class="form-group">
                 <label for="headache">Headache</label>
-                <input type="number" name="headache" id="headache" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="headache" id="headache" placeholder="0 = No, 1 = Yes" min="0" max="1"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="diabetes">Diabetes</label>
-                <input type="number" name="diabetes" id="diabetes" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="diabetes" id="diabetes" placeholder="0 = No, 1 = Yes" min="0" max="1"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="hypertension">Hypertension</label>
-                <input type="number" name="hypertension" id="hypertension" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="hypertension" id="hypertension" placeholder="0 = No, 1 = Yes" min="0" max="1"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="heart_disease">Heart Disease</label>
-                <input type="number" name="heart_disease" id="heart_disease" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="heart_disease" id="heart_disease" placeholder="0 = No, 1 = Yes" min="0"
+                    max="1" required>
             </div>
 
             <div class="form-group">
@@ -117,13 +128,14 @@
         </form>
 
         {% if result is not none %}
-        <div class="result-box logistic-result-box {% if result.prediction == 1 %}covid-positive{% else %}covid-negative{% endif %}">
+        <div
+            class="result-box logistic-result-box {% if result.prediction == 1 %}covid-positive{% else %}covid-negative{% endif %}">
             <h2>
                 Prediction:
                 {% if result.prediction == 1 %}
-                    Has COVID-19
+                Has COVID-19
                 {% else %}
-                    Does Not Have COVID-19
+                Does Not Have COVID-19
                 {% endif %}
             </h2>
 
