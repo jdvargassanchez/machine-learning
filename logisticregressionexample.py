@@ -73,8 +73,8 @@ def get_prediction(input_data: dict):
 def handle_form(form):
     input_data = {
         "age": float(form['age']),
-        "gender": form['gender'],  # ahora puede ser 'Male' o 'Female'
-        "vaccination_status": form['vaccination_status'],  # 'Yes' o 'No'
+        "gender": form['gender'],
+        "vaccination_status": form['vaccination_status'],
         "fever": float(form['fever']),
         "cough": float(form['cough']),
         "fatigue": float(form['fatigue']),
