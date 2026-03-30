@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "navegation_menu.html" %}
+
+{% block title %}QDA application{% endblock %}
+
+{% block content %}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,7 +91,7 @@
         <div class="col-lg-5">
             <div class="box">
 
-                <h5>🎯 Predict Class</h5>
+                <h5>Predict Class</h5>
 
                 <input type="number" id="inputX" class="form-control mb-2" placeholder="Enter X">
                 <input type="number" id="inputY" class="form-control mb-2" placeholder="Enter Y">
@@ -269,4 +273,4 @@ new Chart(document.getElementById("qdaChart"),{
 </script>
 
 </body>
-</html>
+{% endblock %}
