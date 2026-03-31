@@ -140,29 +140,56 @@
 
         <hr style="margin:0px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
 
-        <!-- MODEL EVALUATION -->
-        {% if metrics %}
-        <div class="model-info">
-            <h2>Model Evaluation</h2>
+<!-- MODEL EVALUATION -->
+{% if metrics %}
+<div class="model-info">
+    <h2>Model Evaluation</h2>
 
-            <p><strong>Accuracy:</strong> {{ (metrics.accuracy * 100) | round(2) }}%</p>
+    <p><strong>Accuracy:</strong> {{ (metrics.accuracy * 100) | round(2) }}%</p>
 
-            <img src="{{ url_for('static', filename='images/confusion_matrix_logistic.png') }}" alt="Confusion Matrix"
-                style="width:400px; display:block; margin:20px auto; border-radius:16px;">
+    <img src="{{ url_for('static', filename='images/confusion_matrix_logistic.png') }}"
+         alt="Confusion Matrix"
+         style="width:500px; display:block; margin:20px auto; border-radius:16px;">
 
-            <p>
-                The confusion matrix shows how well the Logistic Regression model classifies patients into
-                hospitalized and not hospitalized categories.
-            </p>
+    <p>
+        The confusion matrix shows how well the Logistic Regression model classifies patients into
+        hospitalized and not hospitalized categories.
+    </p>
 
-            <h3>Classification Metrics</h3>
-            <p><strong>Precision (Hospitalized):</strong> {{ metrics.classification_report['1']['precision'] | round(2)
-                }}</p>
-            <p><strong>Recall (Hospitalized):</strong> {{ metrics.classification_report['1']['recall'] | round(2) }}</p>
-            <p><strong>F1-Score (Hospitalized):</strong> {{ metrics.classification_report['1']['f1-score'] | round(2) }}
-            </p>
-        </div>
-        {% endif %}
+    <h3>Classification Metrics</h3>
+    <p><strong>Precision (Hospitalized):</strong> {{ metrics.classification_report['1']['precision'] | round(2) }}</p>
+    <p><strong>Recall (Hospitalized):</strong> {{ metrics.classification_report['1']['recall'] | round(2) }}</p>
+    <p><strong>F1-Score (Hospitalized):</strong> {{ metrics.classification_report['1']['f1-score'] | round(2) }}</p>
+
+    <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
+
+    <h2>Logistic Regression Scatter Plot</h2>
+
+    <img src="{{ url_for('static', filename='images/logistic_scatter_plot.png') }}"
+         alt="Logistic Regression Scatter Plot"
+         style="width:600px; display:block; margin:20px auto; border-radius:16px;">
+
+    <p>
+        This scatter plot visualizes the relationship between <strong>Age</strong> and
+        <strong>Shortness of Breath</strong> in relation to hospitalization status.
+        Each point represents a patient in the dataset.
+    </p>
+
+    <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
+
+    <h2>Logistic Regression Curve</h2>
+
+    <img src="{{ url_for('static', filename='images/logistic_curve.png') }}"
+         alt="Logistic Regression Curve"
+         style="width:700px; display:block; margin:20px auto; border-radius:16px;">
+
+    <p>
+        This graph shows the classic <strong>logistic regression sigmoid curve</strong>,
+        illustrating how the probability of hospitalization changes according to the patient's age.
+        Each point represents a real patient, while the curve models the estimated probability.
+    </p>
+</div>
+{% endif %}
 
         <a class="back-link" href="/logistic-regression-concepts">⬅ Back to Concepts</a>
 
