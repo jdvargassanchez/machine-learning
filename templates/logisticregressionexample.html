@@ -8,25 +8,21 @@
 
     <h1>Logistic Regression - Health Predictor</h1>
 
-
     <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
 
     <div class="model-info">
         <h2>How the Model Works</h2>
         <img src="{{ url_for('static', filename='images/logistic_image.jpg') }}" alt="Logistic Regression"
-            style="width:300px; display:block; margin:20px auto;">
-
-
+            style="width:300px; display:block; margin:20px auto; border-radius:16px;">
 
         <p>
-            This application uses a Logistic Regression model to predict whether a patient is likely to have COVID-19
-            based on symptoms and medical conditions, using the dataset
-            "health_dataset.csv for determining the probability of hospitalization of a patient for COVID-19".
+            This application uses a Logistic Regression model to predict whether a patient is likely to require hospitalization
+            based on symptoms and medical conditions related to COVID-19.
         </p>
 
         <p>
             The model considers factors such as age, gender, vaccination status, symptoms like fever, cough, fatigue,
-            and pre-existing medical conditions.
+            shortness of breath, and pre-existing medical conditions.
         </p>
 
         <p>
@@ -43,7 +39,6 @@
                 <input type="number" name="age" id="age" placeholder="Enter age" required>
             </div>
 
-            <!-- Gender -->
             <div class="form-group">
                 <label for="gender">Select Your Gender</label>
                 <select name="gender" id="gender" class="custom-select" required>
@@ -53,7 +48,6 @@
                 </select>
             </div>
 
-            <!-- Vaccination Status -->
             <div class="form-group">
                 <label for="vaccination_status">Vaccination Status</label>
                 <select name="vaccination_status" id="vaccination_status" class="custom-select" required>
@@ -80,8 +74,8 @@
 
             <div class="form-group">
                 <label for="shortness_of_breath">Shortness of Breath</label>
-                <input type="number" name="shortness_of_breath" id="shortness_of_breath" placeholder="0 = No, 1 = Yes"
-                    min="0" max="1" required>
+                <input type="number" name="shortness_of_breath" id="shortness_of_breath"
+                    placeholder="0 = No, 1 = Yes" min="0" max="1" required>
             </div>
 
             <div class="form-group">
@@ -104,8 +98,8 @@
 
             <div class="form-group">
                 <label for="hypertension">Hypertension</label>
-                <input type="number" name="hypertension" id="hypertension" placeholder="0 = No, 1 = Yes" min="0" max="1"
-                    required>
+                <input type="number" name="hypertension" id="hypertension" placeholder="0 = No, 1 = Yes" min="0"
+                    max="1" required>
             </div>
 
             <div class="form-group">
@@ -116,33 +110,59 @@
 
             <div class="form-group">
                 <label for="asthma">Asthma</label>
-                <input type="number" name="asthma" id="asthma" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="asthma" id="asthma" placeholder="0 = No, 1 = Yes" min="0" max="1"
+                    required>
             </div>
 
             <div class="form-group">
                 <label for="cancer">Cancer</label>
-                <input type="number" name="cancer" id="cancer" placeholder="0 = No, 1 = Yes" min="0" max="1" required>
+                <input type="number" name="cancer" id="cancer" placeholder="0 = No, 1 = Yes" min="0" max="1"
+                    required>
             </div>
 
             <button type="submit" class="btn-predict">Predict</button>
         </form>
 
         {% if result is not none %}
-        <div
-            class="result-box logistic-result-box {% if result.prediction == 1 %}covid-positive{% else %}covid-negative{% endif %}">
+        <div class="result-box logistic-result-box {% if result.prediction == 1 %}covid-positive{% else %}covid-negative{% endif %}">
             <h2>
                 Prediction:
                 {% if result.prediction == 1 %}
-                Has COVID-19
+                Hospitalization Required
                 {% else %}
-                Does Not Have COVID-19
+                No Hospitalization Required
                 {% endif %}
             </h2>
 
-            <p><strong>Probability:</strong> {{ (result.probability * 100) | round(2) }}%</p>
+            <p><strong>Probability of Hospitalization:</strong> {{ (result.probability * 100) | round(2) }}%</p>
         </div>
         {% endif %}
-        <!-- Back to concepts -->
+
+        <hr style="margin:40px 0; border: 1px solid rgba(108, 99, 255, 0.18);">
+
+        <!-- MODEL EVALUATION -->
+        {% if metrics %}
+        <div class="model-info">
+            <h2>Model Evaluation</h2>
+
+            <p><strong>Accuracy:</strong> {{ (metrics.accuracy * 100) | round(2) }}%</p>
+
+            <img src="{{ url_for('static', filename='images/confusion_matrix_logistic.png') }}"
+                 alt="Confusion Matrix"
+                 style="width:500px; display:block; margin:20px auto; border-radius:16px;">
+
+            <p>
+                The confusion matrix shows how well the Logistic Regression model classifies patients into
+                hospitalized and not hospitalized categories.
+            </p>
+
+            <h3>Classification Metrics</h3>
+            <p><strong>Precision (Hospitalized):</strong> {{ metrics.classification_report['1']['precision'] | round(2) }}</p>
+            <p><strong>Recall (Hospitalized):</strong> {{ metrics.classification_report['1']['recall'] | round(2) }}</p>
+            <p><strong>F1-Score (Hospitalized):</strong> {{ metrics.classification_report['1']['f1-score'] | round(2) }}</p>
+        </div>
+        {% endif %}
+
         <a class="back-link" href="/logistic-regression-concepts">⬅ Back to Concepts</a>
 
     </div>

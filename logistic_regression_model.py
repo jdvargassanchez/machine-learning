@@ -8,32 +8,12 @@ import seaborn as sns
 
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+from sklearn.metrics import (
+    accuracy_score,
+    confusion_matrix,
+    classification_report
+)
 from sklearn.preprocessing import StandardScaler
-
-
-def save_confusion_matrix(cm):
-    """
-    Save confusion matrix as an image in static/images/
-    """
-    os.makedirs("static/images", exist_ok=True)
-
-    plt.figure(figsize=(6, 5))
-    sns.heatmap(
-        cm,
-        annot=True,
-        fmt="d",
-        cmap="Purples",
-        xticklabels=["Not Hospitalized", "Hospitalized"],
-        yticklabels=["Not Hospitalized", "Hospitalized"]
-    )
-
-    plt.title("Confusion Matrix - Logistic Regression")
-    plt.xlabel("Predicted Label")
-    plt.ylabel("True Label")
-    plt.tight_layout()
-    plt.savefig("static/images/confusion_matrix_logistic.png")
-    plt.close()
 
 
 def train_model():
@@ -97,16 +77,38 @@ def train_model():
     return model, scaler, feature_names, accuracy, cm, report
 
 
-# =========================================
-# Train once when file is loaded
-# =========================================
+def save_confusion_matrix(cm):
+    """
+    Guarda la matriz de confusión como imagen en static/images/
+    """
+    os.makedirs("static/images", exist_ok=True)
+
+    plt.figure(figsize=(6, 5))
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap="Purples",
+        xticklabels=["Not Hospitalized", "Hospitalized"],
+        yticklabels=["Not Hospitalized", "Hospitalized"]
+    )
+
+    plt.title("Confusion Matrix - Logistic Regression")
+    plt.xlabel("Predicted Label")
+    plt.ylabel("True Label")
+    plt.tight_layout()
+    plt.savefig("static/images/confusion_matrix_logistic.png")
+    plt.close()
+
+
+# =========================
+# Train once
+# =========================
 _model, _scaler, _feature_names, _accuracy, _cm, _report = train_model()
 
 
 def get_prediction(input_data: dict):
-    """
-    Predict hospitalization probability for one patient
-    """
+    # Convert input dict to DataFrame
     df = pd.DataFrame([input_data])
 
     # Apply same encoding
@@ -128,10 +130,8 @@ def get_prediction(input_data: dict):
     }
 
 
+# Handle form (Flask)
 def handle_form(form):
-    """
-    Receive data from Flask form and return prediction
-    """
     input_data = {
         "age": float(form['age']),
         "gender": form['gender'],
@@ -154,7 +154,7 @@ def handle_form(form):
 
 def get_model_metrics():
     """
-    Return model evaluation metrics for Flask
+    Devuelve métricas para mostrar en Flask
     """
     return {
         "accuracy": _accuracy,
