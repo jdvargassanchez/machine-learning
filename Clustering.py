@@ -39,5 +39,13 @@ def ApplyClusteringKmeans():
     sumamaryClusters={}
     for label in labels:
         label=int(label)
-        summaryClusters = None
-        summaryClusters[label]
+        summaryClusters = summaryClusters.get(label,0) + 1 
+
+    centers=model.cluster_centers_.tolist()
+
+    return{
+        "result":result,
+        "summaryClusters":summaryClusters,
+        "centers":centers
+    }
+    
