@@ -27,7 +27,8 @@ def ApplyClusteringKmeans():
     x=scaler.fit_transform(x)
 
     model=KMeans(n_clusters=3,random_state=42,n_init=10)
-    labels=model.fit_predict(x)
+    labels=model.fit_predict(Xscaled)
+    result=[]
 
 
     for i,person in enumerate(data):
