@@ -72,8 +72,11 @@ def unsupervised_concepts():
 if __name__ == '__main__':
     app.run(debug=True)
 
-app
 @app.route('/clustering-example')
 def clustering_example():
     return render_template('clustering_example.html')
+    
+@app.route('/kmeans-manual')
+def kmeans_manual():
+    return render_template('kmeans_manual.html')
     
