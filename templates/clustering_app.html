@@ -47,16 +47,7 @@
                 <td>{{ p.ingresos }}</td>
                 <td>{{ p.gasto }}</td>
                 <td>
-                    <span style="
-                        padding:5px 10px;
-                        border-radius:8px;
-                        color:white;
-                        background-color:
-                        {% if p.cluster == 0 %} #3498db
-                        {% elif p.cluster == 1 %} #2ecc71
-                        {% else %} #e74c3c
-                        {% endif %};
-                    ">
+                    <span class="cluster cluster-{{ p.cluster }}">
                         {{ p.cluster }}
                     </span>
                 </td>
