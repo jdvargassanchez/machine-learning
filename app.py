@@ -65,6 +65,10 @@ def qda_concepts():
 def qda_example():
     return render_template('qda_example.html')
 
+@app.route('/unsupervised-concepts')
+def unsupervised_concepts():
+    return render_template('unsupervised_concepts.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
 

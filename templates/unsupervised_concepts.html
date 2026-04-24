@@ -1,0 +1,174 @@
+{% extends "navegation_menu.html" %}
+
+{% block title %}Unsupervised Learning - Basic Concepts{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsupervised Learning - Basic Concepts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="inner-page">
+
+    <div class="page-header">
+        <h1>Unsupervised Machine Learning — Basic Concepts</h1>
+        <span class="badge-tag">Unsupervised Learning · Clustering · K-Means</span>
+
+        <div class="logistic-header">
+            <a href="/kmeans-manual" class="btn btn-success btn-soft">
+                <i class="fa-solid fa-link me-2"></i>K-Means Manual Exercise
+            </a>
+            <a href="/clustering-app" class="btn btn-primary btn-soft ">
+                <i class="fa-solid fa-link me-2"></i>Clustering Application
+            </a>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin: 20px auto 0; max-width:760px; padding:0 16px;">
+        <img src=""
+            alt="K-Means Clustering visualization"
+            style="width:100%; border-radius:14px; object-fit:cover; max-height:260px; box-shadow:0 6px 28px rgba(0,0,0,0.3);">
+    </div>
+
+    <div class="content-card">
+
+        <h2 class="section-title">What is Unsupervised Learning?</h2>
+        <div class="box">
+            <p>
+                <strong>Unsupervised Learning</strong> is a type of machine learning where the model is trained on
+                <strong>unlabeled data</strong>. Unlike supervised learning, there are no correct answers or target
+                variables. The algorithm must discover patterns, structures, or relationships within the data on its
+                own.
+            </p>
+            <p>Common applications include:</p>
+            <ul>
+                <li>Customer segmentation</li>
+                <li>Anomaly detection</li>
+                <li>Data compression</li>
+                <li>Pattern recognition</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">What is Clustering?</h2>
+        <div class="box">
+            <p>
+                <strong>Clustering</strong> is a type of unsupervised learning that involves grouping similar data
+                points together. The goal is to partition a dataset into <strong>clusters</strong> where:
+            </p>
+            <ul>
+                <li>Points within the same cluster are <strong>similar</strong> to each other</li>
+                <li>Points in different clusters are <strong>different</strong> from each other</li>
+            </ul>
+            <p>It is widely used for exploratory data analysis and finding natural groupings in data.</p>
+        </div>
+
+        <h2 class="section-title">What is K-Means?</h2>
+        <div class="box">
+            <p>
+                <strong>K-Means</strong> is one of the most popular and straightforward clustering algorithms. It
+                partitions data into <strong>K</strong> distinct, non-overlapping clusters (groups). The algorithm
+                works iteratively to assign each data point to one of K clusters based on the distance to the cluster
+                centers (centroids).
+            </p>
+            <p>The name "K-Means" comes from the fact that each cluster is represented by the <strong>mean</strong>
+                (average) of all points in that cluster.</p>
+        </div>
+
+        <h2 class="section-title">Centroids</h2>
+        <div class="box">
+            <p>
+                A <strong>centroid</strong> is the center of a cluster. In K-Means, each cluster has a centroid,
+                which is calculated as the <strong>mean (average) position</strong> of all points in that cluster.
+            </p>
+            <p>
+                Initially, centroids are chosen randomly. Then, the algorithm repeatedly recalculates them as
+                points are reassigned to clusters. The final centroids represent the "heart" of each cluster.
+            </p>
+            <div class="formula">Centroid = (x₁, x₂, ..., xₙ)</div>
+            <p>Where x is the average of each feature within the cluster.</p>
+        </div>
+
+        <h2 class="section-title">Distance Metrics: Euclidean Distance</h2>
+        <div class="box">
+            <p>
+                In K-Means, the <strong>Euclidean distance</strong> is the most common metric used to measure how
+                far a data point is from a centroid. It represents the straight-line distance between two points
+                in multi-dimensional space.
+            </p>
+            <div class="formula">d(p, q) = √[(p₁ - q₁)² + (p₂ - q₂)² + ... + (pₙ - qₙ)²]</div>
+            <p>
+                For two features (2D space), the formula simplifies to:
+            </p>
+            <div class="formula">d = √[(x₁ - x₂)² + (y₁ - y₂)²]</div>
+            <p>
+                The point is assigned to the cluster whose centroid has the <strong>smallest Euclidean distance</strong>.
+            </p>
+        </div>
+
+        <h2 class="section-title">Iterative Process of K-Means</h2>
+        <div class="box">
+            <p>The K-Means algorithm follows a simple 4-step iterative process:</p>
+            <ol>
+                <li><strong>Initialize:</strong> Choose K random centroids.</li>
+                <li><strong>Assign:</strong> Assign each data point to the nearest centroid (using Euclidean distance).
+                </li>
+                <li><strong>Update:</strong> Recalculate centroids as the mean of all points in each cluster.</li>
+                <li><strong>Repeat:</strong> Repeat steps 2-3 until convergence (no changes in cluster assignments).</li>
+            </ol>
+            <p>This process typically runs for a fixed number of iterations or until the centroids stop moving significantly.</p>
+        </div>
+
+        <h2 class="section-title">Variance and Convergence</h2>
+        <div class="box">
+            <p>
+                <strong>Within-Cluster Variance</strong> measures how spread out the points are within a cluster.
+                The goal of K-Means is to <strong>minimize this variance</strong> (make clusters as tight as possible).
+            </p>
+            <p>
+                <strong>Convergence</strong> happens when the centroids no longer change significantly between
+                iterations, or when cluster assignments become stable. The algorithm stops at this point.
+            </p>
+            <p>
+                As iterations progress, the total variance <strong>decreases</strong> - which is why we can
+                visualize it with a decreasing line graph.
+            </p>
+        </div>
+
+        <h2 class="section-title">Real-World Applications of K-Means</h2>
+        <div class="box">
+            <p>K-Means clustering is used across many industries:</p>
+            <ul>
+                <li><strong>Customer Segmentation:</strong> Grouping customers by purchasing behavior for targeted
+                    marketing.</li>
+                <li><strong>Image Compression:</strong> Reducing the number of colors in an image by grouping
+                    similar colors.</li>
+                <li><strong>Anomaly Detection:</strong> Identifying unusual patterns in network traffic or
+                    transactions.</li>
+                <li><strong>Document Clustering:</strong> Organizing news articles or research papers by topic.
+                </li>
+                <li><strong>Geolocation Analysis:</strong> Identifying crime hotspots or optimal store locations.
+                </li>
+                <li><strong> Genetics:</strong> Grouping genes with similar expression patterns.</li>
+            </ul>
+        </div>
+
+
+        <a class="back-link" href="/">← Back to Home</a>
+
+        <div class="footer">
+            <p>Machine Learning Flask Project | Unsupervised Learning </p>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+{% endblock %}
