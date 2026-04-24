@@ -23,7 +23,7 @@ def ApplyClusteringKmeans():
     x=[[person["edad"],person["ingresos"],person["gasto"]] for person in data]
 
     scaler=StandardScaler()
-    x=scaler.fit_transform(x)
+    Xscaled=scaler.fit_transform(x)
 
     model=KMeans(n_clusters=3,random_state=42,n_init=10)
     labels=model.fit_predict(Xscaled)
@@ -35,10 +35,10 @@ def ApplyClusteringKmeans():
         row["cluster"]=int (labels[i])
         result.append(row)
 
-    sumamaryClusters={}
+    summaryClusters={}
     for label in labels:
         label=int(label)
-        summaryClusters = summaryClusters.get(label,0) + 1 
+        summaryClusters[label] = summaryClusters.get(label,0) + 1 
 
     centers=model.cluster_centers_.tolist()
 

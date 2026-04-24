@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import LinearRegression
 import linearregressionexample
 import logisticregressionexample
+import Clustering
 
 app = Flask(__name__)
 
@@ -69,12 +70,10 @@ def qda_example():
 def unsupervised_concepts():
     return render_template('unsupervised_concepts.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
-
-@app.route('/clustering-example')
-def clustering_example():
-    return render_template('clustering_example.html')
+@app.route('/clustering-app')
+def clustering_app():
+    data = Clustering.ApplyClusteringKmeans()
+    return render_template('clustering_app.html', data=data)
     
 @app.route('/kmeans-manual')
 def kmeans_manual():
