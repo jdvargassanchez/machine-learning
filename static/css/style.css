@@ -984,22 +984,16 @@ body.grades-page {
     border-radius: 8px;
     color: white;
     font-weight: bold;
-    display: inline-block;
 }
 
-/* Colores por cluster */
 .cluster-0 {
     background-color: #3498db;
 }
 
-/* azul */
 .cluster-1 {
     background-color: #2ecc71;
 }
 
-/* verde */
 .cluster-2 {
     background-color: #e74c3c;
 }
-
-/* rojo */

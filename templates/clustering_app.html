@@ -1,18 +1,19 @@
 {% extends "navegation_menu.html" %}
 
-{% block title %}K-Means Clustering{% endblock %}
+{% block title %}Credit Card Clustering{% endblock %}
 
 {% block content %}
 
 <!-- Page header -->
 <div class="page-header">
-    <h1>K-Means Clustering — Results</h1>
-    <span class="badge-tag">Unsupervised Learning · Clustering</span>
+    <h1>Credit Card Customer Segmentation</h1>
+    <span class="badge-tag">Unsupervised Learning · K-Means</span>
 </div>
 
 <!-- Imagen -->
 <div style="text-align:center; margin: 20px auto 0; max-width:760px; padding:0 16px;">
-    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=900&fit=crop&auto=format" alt="Clustering"
+    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&fit=crop&auto=format"
+        alt="Credit Card Data"
         style="width:100%; border-radius:14px; object-fit:cover; max-height:260px; box-shadow:0 6px 28px rgba(0,0,0,0.3);">
 </div>
 
@@ -20,32 +21,32 @@
 <div class="content-card">
 
     <!-- Explicación -->
-    <h2 class="section-title">What is K-Means?</h2>
+    <h2 class="section-title">About the Model</h2>
     <div class="box">
         <p>
-            K-Means is an unsupervised learning algorithm that groups data into clusters
-            based on similarity. Each data point is assigned to the nearest centroid.
+            This model segments credit card customers into different groups using K-Means clustering.
+            It analyzes financial behavior based on balance, purchases, and credit limit to identify
+            patterns among users.
         </p>
     </div>
 
     <!-- Tabla -->
-    <h2 class="section-title">Clustered Data</h2>
+    <h2 class="section-title">Customer Segmentation</h2>
     <div class="box">
+
         <table style="width:100%; border-collapse: collapse;">
             <tr style="background-color:#222; color:white;">
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Ingresos</th>
-                <th>Gasto</th>
+                <th>Balance</th>
+                <th>Purchases</th>
+                <th>Credit Limit</th>
                 <th>Cluster</th>
             </tr>
 
-            {% for p in data.result %}
+            {% for p in data.result[:50] %} <!-- limitamos a 50 para que no explote la página -->
             <tr style="text-align:center;">
-                <td>{{ p.nombre }}</td>
-                <td>{{ p.edad }}</td>
-                <td>{{ p.ingresos }}</td>
-                <td>{{ p.gasto }}</td>
+                <td>{{ p.BALANCE }}</td>
+                <td>{{ p.PURCHASES }}</td>
+                <td>{{ p.CREDIT_LIMIT }}</td>
                 <td>
                     <span class="cluster cluster-{{ p.cluster }}">
                         {{ p.cluster }}
@@ -53,7 +54,9 @@
                 </td>
             </tr>
             {% endfor %}
+
         </table>
+
     </div>
 
     <!-- Resumen -->
@@ -64,7 +67,7 @@
             <li>
                 <strong style="color:var(--accent-2)">
                     Cluster {{ key }}
-                </strong>: {{ value }} personas
+                </strong>: {{ value }} customers
             </li>
             {% endfor %}
         </ul>

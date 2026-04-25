@@ -3,9 +3,10 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import numpy as np
+import os   
 
 def getdataset():
-    df = pd.read_csv("credit_card_dataset.csv")
+    df = pd.read_csv(os.path.join(os.path.dirname(__file__), 'data', 'credit_card_dataset.csv'))
     df = df.dropna()
     data = df.to_dict(orient="records")
 
@@ -31,6 +32,8 @@ def ApplyClusteringKmeans():
         row=person.copy()
         row["cluster"]=int (labels[i])
         result.append(row)
+
+
 
     summaryClusters={}
     for label in labels:
