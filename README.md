@@ -36,18 +36,28 @@ machine-learning/
 ├── app.py                           # Main Flask server
 ├── LinearRegression.py              # Model: Grade Predictor
 ├── linearregressionexample.py       # Model: Salary Predictor
+├── logisticregressionexample.py     # Model: Logistic Regression Predictor
+├── ClusteringApp.py                 # Model: Credit Card Clustering
 ├── tabulador.py                     # Auxiliary script
 ├── requirements.txt                 # Project dependencies
 │
 ├── data/
 │   ├── train.csv                    # Salary dataset (training source)
-│   └── data_dictionary.csv          # Dataset variable dictionary
+│   ├── data_dictionary.csv          # Dataset variable dictionary
+│   └── credit_card_dataset.csv      # Credit card clustering dataset
 │
 ├── templates/
 │   ├── index.html                   # Home page / navigation menu
 │   ├── linear_concepts.html         # Linear Regression concepts
 │   ├── linearRegressionGrades.html  # App: Grade Predictor
 │   ├── salary_app.html              # App: Salary Predictor
+│   ├── logistic_concepts.html       # Logistic Regression concepts
+│   ├── logistic_regression_app.html # App: Logistic Regression
+│   ├── qda_concepts.html            # QDA concepts
+│   ├── qda_example.html             # App: QDA Example
+│   ├── unsupervised_concepts.html   # Unsupervised Learning concepts
+│   ├── clustering_app.html          # App: K-Means Clustering
+│   ├── kmeans_manual.html           # K-Means step-by-step
 │   ├── use_cases1.html              # Use Case 1: House Price Prediction
 │   ├── use_cases2.html              # Use Case 2: Anti-Procrastination App
 │   ├── use_cases3.html              # Use Case 3: Smart Health Colombia
@@ -106,6 +116,13 @@ Then open your browser at: [http://localhost:5000](http://localhost:5000)
 | `/linear-regression-concepts` | Theoretical concepts of Linear Regression |
 | `/linear-regression-app` | Grade Predictor application |
 | `/salary-predictor` | Salary Predictor application |
+| `/logistic-regression-concepts` | Theoretical concepts of Logistic Regression |
+| `/logistic-regression-app` | Logistic Regression application |
+| `/qda_concepts` | Theoretical concepts of QDA |
+| `/qda-example` | QDA Example application |
+| `/unsupervised-concepts` | Theoretical concepts of Unsupervised Learning |
+| `/clustering-app` | K-Means Clustering application |
+| `/kmeans-manual` | Interactive K-Means explanation |
 | `/use-case1` | Use Case 1 — House Price Prediction |
 | `/use-case2` | Use Case 2 — Anti-Procrastination App |
 | `/use-case3` | Use Case 3 — Smart Health Colombia |
@@ -131,9 +148,19 @@ Uses **Linear Regression** to predict a developer's salary.
 - **Output variable (y):** Salary in US dollars (`salary_usd`)
 - **Data:** `data/train.csv` file
 
+### Customer Segmentation (`ClusteringApp.py`)
+
+Uses **K-Means Clustering** to segment credit card customers based on their financial behavior.
+
+- **Input variables (X):** Account balance (`BALANCE`), Total purchases (`PURCHASES`), Credit limit (`CREDIT_LIMIT`)
+- **Output:** Cluster assignment (0, 1, or 2)
+- **Data:** `data/credit_card_dataset.csv` file
+
 ---
 
-## Dataset
+## Datasets
+
+### Developer Salaries (`data/train.csv`)
 
 The `data/train.csv` file contains information about software developers and their salaries. Below is a description of its columns:
 
@@ -146,6 +173,17 @@ The `data/train.csv` file contains information about software developers and the
 | `frameworks` | string | Primary frameworks used |
 | `company_size` | string | Number of employees in the company |
 | `salary_usd` | target | **Target variable:** Salary in USD (to predict) |
+
+### Credit Card Customers (`data/credit_card_dataset.csv`)
+
+Contains financial information about credit card users to perform segmentation. Key columns used for clustering:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `CUST_ID` | string | Customer identification (ignored in training) |
+| `BALANCE` | number | Remaining account balance |
+| `PURCHASES` | number | Total purchases made |
+| `CREDIT_LIMIT` | number | User's credit card limit |
 
 ---
 

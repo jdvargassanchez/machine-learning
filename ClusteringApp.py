@@ -33,7 +33,16 @@ def ApplyClusteringKmeans():
         row["cluster"]=int (labels[i])
         result.append(row)
 
-
+    result = []
+    for i, person in enumerate(data):
+        row = {
+            "CUST_ID": person["CUST_ID"],
+            "BALANCE": person["BALANCE"],
+            "PURCHASES": person["PURCHASES"],
+            "CREDIT_LIMIT": person["CREDIT_LIMIT"],
+            "cluster": int(labels[i])
+        }
+        result.append(row)
 
     summaryClusters={}
     for label in labels:

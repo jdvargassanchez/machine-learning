@@ -4,46 +4,90 @@
 
 {% block content %}
 
-<!-- Page header -->
 <div class="page-header">
     <h1>Credit Card Customer Segmentation</h1>
     <span class="badge-tag">Unsupervised Learning · K-Means</span>
 </div>
 
-<!-- Imagen -->
 <div style="text-align:center; margin: 20px auto 0; max-width:760px; padding:0 16px;">
     <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&fit=crop&auto=format"
-        alt="Credit Card Data"
-        style="width:100%; border-radius:14px; object-fit:cover; max-height:260px; box-shadow:0 6px 28px rgba(0,0,0,0.3);">
+        style="width:100%; border-radius:14px; max-height:260px; object-fit:cover;">
 </div>
 
-<!-- Contenido -->
 <div class="content-card">
 
-    <!-- Explicación -->
-    <h2 class="section-title">About the Model</h2>
+
+    <h2 class="section-title">About the Dataset</h2>
     <div class="box">
         <p>
-            This model segments credit card customers into different groups using K-Means clustering.
-            It analyzes financial behavior based on balance, purchases, and credit limit to identify
-            patterns among users.
+            This dataset contains information about approximately 1000 credit card customers,
+            including their financial behavior over the last 6 months. It is commonly used
+            for customer segmentation and marketing strategy analysis.
+        </p>
+        <p>
+            Each record represents a customer and includes variables related to balance,
+            purchases, payments, and credit usage.
         </p>
     </div>
 
-    <!-- Tabla -->
+
+    <h2 class="section-title">Selected Variables</h2>
+    <div class="box">
+        <p>
+            For this clustering model, only key numerical variables were selected to simplify
+            the analysis and improve interpretability:
+        </p>
+        <ul>
+            <li><strong style="color:var(--accent-2)">BALANCE:</strong> Remaining account balance</li>
+            <li><strong style="color:var(--accent-2)">PURCHASES:</strong> Total purchases made</li>
+            <li><strong style="color:var(--accent-2)">CREDIT_LIMIT:</strong> Credit card limit</li>
+        </ul>
+        <p>
+            The variable <strong>CUST_ID</strong> is used only for identification and is not included
+            in the clustering process.
+        </p>
+    </div>
+
+
+    <h2 class="section-title">Model Description</h2>
+    <div class="box">
+        <p>
+            The K-Means algorithm was applied to group customers into three clusters based on
+            their financial behavior. The model identifies patterns without prior labels,
+            allowing automatic segmentation of users.
+        </p>
+    </div>
+
+
+    <h2 class="section-title">Application</h2>
+    <div class="box">
+        <p>
+            This segmentation can be used to support business decisions such as:
+        </p>
+        <ul>
+            <li>Identifying high-value customers</li>
+            <li>Detecting risky financial behavior</li>
+            <li>Designing personalized marketing strategies</li>
+            <li>Improving credit management policies</li>
+        </ul>
+    </div>
+
+
     <h2 class="section-title">Customer Segmentation</h2>
     <div class="box">
 
         <table style="width:100%; border-collapse: collapse;">
             <tr style="background-color:#222; color:white;">
+                <th>ID</th>
                 <th>Balance</th>
                 <th>Purchases</th>
                 <th>Credit Limit</th>
                 <th>Cluster</th>
             </tr>
 
-            {% for p in data.result[:50] %} <!-- limitamos a 50 para que no explote la página -->
+            {% for p in data.result[:50] %}
             <tr style="text-align:center;">
+                <td>{{ p.CUST_ID }}</td>
                 <td>{{ p.BALANCE }}</td>
                 <td>{{ p.PURCHASES }}</td>
                 <td>{{ p.CREDIT_LIMIT }}</td>
@@ -54,12 +98,10 @@
                 </td>
             </tr>
             {% endfor %}
-
         </table>
 
     </div>
 
-    <!-- Resumen -->
     <h2 class="section-title">Cluster Summary</h2>
     <div class="box">
         <ul>
@@ -73,7 +115,7 @@
         </ul>
     </div>
 
-    <!-- Centroides -->
+
     <h2 class="section-title">Centroids</h2>
     <div class="box">
         <ul>
@@ -83,16 +125,12 @@
         </ul>
     </div>
 
-    <!-- Botón -->
     <a class="back-link" href="/">Back to Home</a>
 
-    <!-- Footer -->
     <div class="footer">
         <p>Machine Learning Flask Project</p>
     </div>
 
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 {% endblock %}
