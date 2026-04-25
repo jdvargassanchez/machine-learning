@@ -3,6 +3,7 @@ import LinearRegression
 import linearregressionexample
 import logisticregressionexample
 import ClusteringApp
+import ClusteringManualApp
 
 app = Flask(__name__)
 
@@ -75,7 +76,12 @@ def clustering_app():
     data = ClusteringApp.ApplyClusteringKmeans()
     return render_template('clustering_app.html', data=data)
     
-@app.route('/kmeans-manual')
-def kmeans_manual():
-    return render_template('kmeans_manual.html')
-    
+@app.route('/clustering-manual-app')
+def clustering_manual_app():
+    data = ClusteringManualApp.ApplyClusteringManualApp()
+    return render_template(
+        'clustering_manual_app.html',
+        result=data["result"],
+        clusterSummary=data["clusterSummary"],
+        centers=data["centers"]
+    )        

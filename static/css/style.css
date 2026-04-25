@@ -997,3 +997,155 @@ body.grades-page {
 .cluster-2 {
     background-color: #e74c3c;
 }
+
+/* ==============================
+   CLUSTERING APP STYLES
+   ============================== */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+}
+
+/* Titles */
+h1, h2 {
+    color: #a78bfa;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* ==============================
+   PRO DASHBOARD TABLE (FINAL)
+   ============================== */
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+
+    background: linear-gradient(145deg, #0b1120, #111827);
+    border-radius: 16px;
+    overflow: hidden;
+
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* HEADER */
+.table thead {
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+}
+
+.table th {
+    padding: 16px;
+    color: #f5f3ff;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* CELLS */
+.table td {
+    padding: 14px;
+    text-align: center;
+    color: #e5e7eb;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ROW BACKGROUNDS */
+.table tbody tr {
+    background: transparent;
+    transition: all 0.25s ease;
+}
+
+/* subtle gradient rows */
+.table tbody tr:nth-child(even) {
+    background: rgba(30, 41, 59, 0.4);
+}
+
+/* HOVER EFFECT 🔥 */
+.table tbody tr:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(139, 92, 246, 0.15),
+        rgba(59, 130, 246, 0.15)
+    );
+    transform: scale(1.01);
+}
+
+/* ==============================
+   FIX CONTENEDOR (CLAVE)
+   ============================== */
+
+.content-card {
+    background: linear-gradient(145deg, #0b1120, #0f172a) !important;
+}
+
+/* tarjetas internas */
+.qda-feature-panel,
+.box,
+.qda-box {
+    background: linear-gradient(145deg, #111827, #0f172a) !important;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* ==============================
+   CLUSTER BADGES (IGUAL A IMG)
+   ============================== */
+
+.cluster-badge {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+/* colores tipo dashboard */
+.cluster-0 {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.cluster-1 {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.cluster-2 {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* ==============================
+   SCROLL CONTAINER
+   ============================== */
+
+.scroll-table {
+    max-height: 420px;
+    overflow-y: auto;
+    border-radius: 16px;
+}
+
+/* scrollbar pro */
+.scroll-table::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-table::-webkit-scrollbar-thumb {
+    background: linear-gradient(#8b5cf6, #6366f1);
+    border-radius: 10px;
+}
+
+.table {
+    background-color: transparent !important;
+}
+
+.table * {
+    background-color: transparent !important;
+}
