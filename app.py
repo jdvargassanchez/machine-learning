@@ -72,7 +72,7 @@ def unsupervised_concepts():
 
 @app.route('/clustering-app')
 def clustering_app():
-    data = Clustering.ApplyClusteringKmeans()
+    data = ClusteringApp.ApplyClusteringKmeans()
     return render_template('clustering_app.html', data=data)
     
 @app.route('/kmeans-manual')
