@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import LinearRegression
 import linearregressionexample
 import logisticregressionexample
-import Clustering
+import ClusteringApp
 
 app = Flask(__name__)
 
