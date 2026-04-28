@@ -879,6 +879,7 @@ body.grades-page {
     font-size: 0.95rem;
 }
 
+
 /* ==========================================
    RESPONSIVE
 ========================================== */
@@ -1070,7 +1071,7 @@ p {
     background: rgba(30, 41, 59, 0.4);
 }
 
-/* HOVER EFFECT 🔥 */
+/* HOVER EFFECT */
 .table tbody tr:hover {
     background: linear-gradient(
         90deg,
@@ -1148,4 +1149,9 @@ p {
 
 .table * {
     background-color: transparent !important;
+}
+
+/* unsupervised concepts */
+.content-card {
+    text-align: left; /* asegura que todo el contenido vaya a la izquierda */
 }
