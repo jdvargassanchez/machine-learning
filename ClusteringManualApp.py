@@ -1,5 +1,7 @@
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+import pandas as pd
+
 
 def GetData():
     return [
@@ -109,29 +111,45 @@ def GetData():
 def ApplyClusteringManualApp():
     data = GetData()
 
-    x = [[property["square_meters"], property["price_thousands"], property["age"]] for property in data]
-    
+    X = [[house["square_meters"], house["price_thousands"], house["age"]] for house in data]
+
     scaler = StandardScaler()
-    Xscaled = scaler.fit_transform(x)
-    
+    Xscaled = scaler.fit_transform(X)
+
     model = KMeans(n_clusters=3, random_state=42, n_init=10)
     labels = model.fit_predict(Xscaled)
-    
+
     result = []
-    for i, property in enumerate(data):
-        row = property.copy()
+    for i, house in enumerate(data):
+        row = house.copy()
         row["Cluster"] = int(labels[i])
         result.append(row)
-        
+
     clusterSummary = {}
     for label in labels:
         label = int(label)
         clusterSummary[label] = clusterSummary.get(label, 0) + 1
-        
+
     centers = model.cluster_centers_.tolist()
+
+    df = pd.DataFrame(result)
 
     return {
         "result": result,
         "clusterSummary": clusterSummary,
-        "centers": centers
+        "centers": centers,
+        "analysis": df.groupby("Cluster").mean().to_dict()
     }
+
+
+if __name__ == "__main__":
+    output = ApplyClusteringManualApp()
+
+    print("Resumen de clusters:")
+    print(output["clusterSummary"])
+
+    print("\nCentros de clusters:")
+    print(output["centers"])
+
+    print("\nAnálisis promedio por cluster:")
+    print(output["analysis"])
