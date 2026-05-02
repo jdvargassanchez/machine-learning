@@ -1010,7 +1010,8 @@ body.grades-page {
 }
 
 /* Titles */
-h1, h2 {
+h1,
+h2 {
     color: #a78bfa;
     margin-bottom: 1rem;
 }
@@ -1035,7 +1036,7 @@ p {
     overflow: hidden;
 
     border: 1px solid rgba(139, 92, 246, 0.2);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* HEADER */
@@ -1049,7 +1050,7 @@ p {
     font-weight: 600;
     text-align: center;
     font-size: 0.95rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* CELLS */
@@ -1057,7 +1058,7 @@ p {
     padding: 14px;
     text-align: center;
     color: #e5e7eb;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* ROW BACKGROUNDS */
@@ -1073,11 +1074,9 @@ p {
 
 /* HOVER EFFECT */
 .table tbody tr:hover {
-    background: linear-gradient(
-        90deg,
-        rgba(139, 92, 246, 0.15),
-        rgba(59, 130, 246, 0.15)
-    );
+    background: linear-gradient(90deg,
+            rgba(139, 92, 246, 0.15),
+            rgba(59, 130, 246, 0.15));
     transform: scale(1.01);
 }
 
@@ -1153,5 +1152,19 @@ p {
 
 /* unsupervised concepts */
 .content-card {
-    text-align: left; /* asegura que todo el contenido vaya a la izquierda */
+    text-align: left;
+    /* asegura que todo el contenido vaya a la izquierda */
+}
+
+.chart-container {
+    width: 100%;
+    height: 600px;
+
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
 }
