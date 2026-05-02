@@ -53,12 +53,23 @@ def salary_app():
         prediction = round(float(raw), 2)
     return render_template('salary_app.html', prediction=prediction)
 
-@app.route('/logistic-regression-app', methods=['GET', 'POST'])
-def logistic_app():
-    prediction = None
+
+@app.route('/logistic-regression-example', methods=['GET', 'POST'])
+def logistic_example():
+    result = None
+
     if request.method == 'POST':
-        prediction = logisticregressionexample.handle_form(request.form)
-    return render_template('logistic_regression_app.html', prediction=prediction)
+        result = logisticregressionexample.handle_form(request.form)
+
+    metrics = logisticregressionexample.get_model_metrics()
+
+    return render_template(
+        'logisticregressionexample.html',
+        result=result,
+        metrics=metrics
+    )
+
+
 @app.route('/qda_concepts')
 def qda_concepts():
     return render_template('qda_concepts.html')
