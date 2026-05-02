@@ -111,17 +111,17 @@ def GetData():
 def ApplyClusteringManualApp():
     data = GetData()
 
-    X = [[house["square_meters"], house["price_thousands"], house["age"]] for house in data]
+    x = [[propiedad["square_meters"], propiedad["price_thousands"], propiedad["age"]] for propiedad in data]
 
     scaler = StandardScaler()
-    Xscaled = scaler.fit_transform(X)
+    Xscaled = scaler.fit_transform(x)
 
     model = KMeans(n_clusters=3, random_state=42, n_init=10)
     labels = model.fit_predict(Xscaled)
 
     result = []
-    for i, house in enumerate(data):
-        row = house.copy()
+    for i, propiedad in enumerate(data):
+        row = propiedad.copy()
         row["Cluster"] = int(labels[i])
         result.append(row)
 
@@ -132,24 +132,8 @@ def ApplyClusteringManualApp():
 
     centers = model.cluster_centers_.tolist()
 
-    df = pd.DataFrame(result)
-
     return {
         "result": result,
         "clusterSummary": clusterSummary,
-        "centers": centers,
-        "analysis": df.groupby("Cluster").mean().to_dict()
+        "centers": centers
     }
-
-
-if __name__ == "__main__":
-    output = ApplyClusteringManualApp()
-
-    print("Resumen de clusters:")
-    print(output["clusterSummary"])
-
-    print("\nCentros de clusters:")
-    print(output["centers"])
-
-    print("\nAnálisis promedio por cluster:")
-    print(output["analysis"])

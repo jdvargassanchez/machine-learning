@@ -240,8 +240,8 @@
     const datasets = [0,1,2].map(c => ({
         label: 'Cluster ' + c,
         data: data.filter(d => d.Cluster === c).map(d => ({
-            x: d.metros2,
-            y: d.precio_miles
+            x: d.square_meters,
+            y: d.price_thousands
         })),
         backgroundColor: colors[c],
         borderColor: borderColors[c],
