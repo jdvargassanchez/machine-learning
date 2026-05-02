@@ -2,7 +2,8 @@ from flask import Flask, render_template, request
 import LinearRegression
 import linearregressionexample
 import logisticregressionexample
-import logistic_regression_model
+import ClusteringApp
+import ClusteringManualApp
 
 app = Flask(__name__)
 
@@ -77,8 +78,21 @@ def qda_concepts():
 def qda_example():
     return render_template('qda_example.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@app.route('/unsupervised-concepts')
+def unsupervised_concepts():
+    return render_template('unsupervised_concepts.html')
 
-
-
+@app.route('/clustering-app')
+def clustering_app():
+    data = ClusteringApp.ApplyClusteringKmeans()
+    return render_template('clustering_app.html', data=data)
+    
+@app.route('/clustering-manual-app')
+def clustering_manual_app():
+    data = ClusteringManualApp.ApplyClusteringManualApp()
+    return render_template(
+        'clustering_manual_app.html',
+        result=data["result"],
+        clusterSummary=data["clusterSummary"],
+        centers=data["centers"]
+    )        

@@ -1,0 +1,253 @@
+{% extends "navegation_menu.html" %}
+
+{% block title %}Credit Card Clustering{% endblock %}
+
+{% block content %}
+
+<body class="inner-page">
+
+    <!-- HEADER -->
+    <div class="page-header text-center">
+        <h1>Credit Card Customer Segmentation</h1>
+        <span class="badge-tag">Unsupervised Learning · K-Means</span>
+    </div>
+
+    <div class="content-card">
+
+        <!-- DATASET INFO -->
+        <h2 class="section-title">About the Dataset</h2>
+        <div class="qda-feature-panel">
+            <p>
+                This dataset contains information about credit card customers and their financial
+                behavior, including spending patterns, credit limits, and payments.
+            </p>
+            <p>
+                The objective is to segment customers into groups based on similar financial behavior
+                using unsupervised learning techniques.
+            </p>
+        </div>
+
+        <!-- VARIABLES -->
+        <h2 class="section-title">Selected Variables</h2>
+        <div class="qda-feature-panel">
+            <ul>
+                <li><strong>CREDIT_LIMIT:</strong> Maximum credit available</li>
+                <li><strong>PURCHASES:</strong> Total purchases made</li>
+            </ul>
+            <p>
+                These variables were selected because they have a stronger relationship and allow
+                better visualization of customer behavior.
+            </p>
+        </div>
+
+        <!-- MODEL -->
+        <h2 class="section-title">Model Description</h2>
+        <div class="qda-feature-panel">
+            <p>
+                K-Means clustering groups customers into 3 clusters based on their financial activity.
+                This allows identifying patterns and segments without predefined labels.
+            </p>
+        </div>
+
+        <!-- STATS -->
+        <div class="qda-stats-row">
+            <div class="qda-stat-box">
+                <h3>{{ data.result|length }}</h3>
+                <p>Customers</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>3</h3>
+                <p>Clusters</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>K</h3>
+                <p>K-Means</p>
+            </div>
+            <div class="qda-stat-box">
+                <h3>ML</h3>
+                <p>Model</p>
+            </div>
+        </div>
+
+        <hr class="qda-section-divider">
+
+        <!-- TABLE -->
+        <h2 class="section-title">Customer Data</h2>
+
+        <div class="qda-feature-panel">
+            <div class="scroll-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Credit Limit</th>
+                            <th>Purchases</th>
+                            <th>Cluster</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in data.result[:50] %}
+                        <tr>
+                            <td>{{ p.CUST_ID }}</td>
+                            <td>{{ p.CREDIT_LIMIT }}</td>
+                            <td>{{ p.PURCHASES }}</td>
+                            <td>
+                                <span class="cluster-badge cluster-{{ p.cluster }}">
+                                    {{ p.cluster }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SUMMARY -->
+        <h2 class="section-title mt-5">Cluster Distribution</h2>
+
+        <div class="box qda-box">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cluster</th>
+                        <th>Customers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, value in data.summaryClusters.items() %}
+                    <tr>
+                        <td>{{ key }}</td>
+                        <td>{{ value }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- CENTROIDS -->
+        <h2 class="section-title mt-5">Cluster Centers</h2>
+
+        <div class="box qda-box">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cluster</th>
+                        <th>Center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in data.centers %}
+                    <tr>
+                        <td>{{ loop.index0 }}</td>
+                        <td>{{ c }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- GRAPH -->
+        <h2 class="section-title mt-5">Visualization</h2>
+
+        <div class="qda-feature-panel">
+            <p>
+                This scatter plot shows the relationship between credit limit and purchases.
+                A logarithmic transformation is applied to purchases to improve visualization
+                and avoid compression of low values.
+            </p>
+
+            <div class="chart-container">
+                <canvas id="clusterChart"></canvas>
+            </div>
+        </div>
+
+        <!-- INTERPRETATION -->
+        <div class="qda-feature-panel mt-5">
+            <h2 class="section-title">Interpretation</h2>
+
+            <div class="qda-two-col">
+                {% for key, value in data.summaryClusters.items() %}
+                <div class="qda-comparison-box">
+                    <h4>Cluster {{ key }}</h4>
+                    <p><strong>Customers:</strong> {{ value }}</p>
+
+                    {% if key == 0 %}
+                    <p>Low credit usage and low spending.</p>
+                    {% elif key == 1 %}
+                    <p>Moderate credit users.</p>
+                    {% elif key == 2 %}
+                    <p>High-value customers with strong purchasing behavior.</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CHART -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const rawData = JSON.parse('{{ data.result | tojson | safe }}');
+
+        const colors = {
+            0: 'rgba(239, 68, 68, 0.7)',
+            1: 'rgba(59, 130, 246, 0.7)',
+            2: 'rgba(34, 197, 94, 0.7)'
+        };
+
+        const datasets = [0, 1, 2].map(c => ({
+            label: 'Cluster ' + c,
+            data: rawData
+                .filter(d => d.cluster === c)
+                .map(d => ({
+                    x: d.CREDIT_LIMIT,
+                    y: Math.log10(d.PURCHASES + 1)
+                })),
+            backgroundColor: colors[c],
+            pointRadius: 5
+        }));
+
+        new Chart(document.getElementById('clusterChart'), {
+            type: 'scatter',
+            data: { datasets: datasets },
+            options: {
+                responsive: true,
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function (ctx) {
+                                const realValue = Math.pow(10, ctx.raw.y) - 1;
+                                return `Limit: ${ctx.raw.x} | Purchases: ${Math.round(realValue)}`;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Credit Limit'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Purchases (log scale)'
+                        },
+                        ticks: {
+                            callback: function (value) {
+                                return Math.round(Math.pow(10, value)).toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+{% endblock %}

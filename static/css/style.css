@@ -7,23 +7,25 @@
 
 /* ── Variables ─────────────────────────────── */
 :root {
-    --bg-dark:        #0d0f1a;
-    --bg-card:        #141627;
-    --bg-card-hover:  #1c1f35;
-    --accent:         #6c63ff;
-    --accent-2:       #a78bfa;
-    --accent-glow:    rgba(108, 99, 255, 0.25);
-    --text-primary:   #e8eaf6;
+    --bg-dark: #0d0f1a;
+    --bg-card: #141627;
+    --bg-card-hover: #1c1f35;
+    --accent: #6c63ff;
+    --accent-2: #a78bfa;
+    --accent-glow: rgba(108, 99, 255, 0.25);
+    --text-primary: #e8eaf6;
     --text-secondary: #9ca3c4;
-    --border:         rgba(108, 99, 255, 0.25);
-    --success:        #10b981;
-    --radius:         14px;
-    --radius-sm:      8px;
-    --shadow:         0 8px 32px rgba(0,0,0,0.45);
+    --border: rgba(108, 99, 255, 0.25);
+    --success: #10b981;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
 }
 
 /* ── Reset & Base ───────────────────────────── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -46,13 +48,13 @@ body {
     width: 100%;
     background: rgba(13, 15, 26, 0.95);
     backdrop-filter: blur(14px);
-    box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;
     justify-content: flex-start;
     padding: 14px 32px;
     z-index: 9999;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     min-height: 82px;
 }
 
@@ -162,7 +164,7 @@ body {
     backdrop-filter: blur(12px);
     border-radius: 14px;
     padding: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     border: 1px solid var(--border);
 }
 
@@ -207,7 +209,7 @@ body {
     background: rgba(20, 22, 39, 0.98);
     border-radius: 14px;
     padding: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     border: 1px solid var(--border);
 }
 
@@ -226,9 +228,9 @@ body {
    HOME PAGE
 ========================================== */
 body.home {
-    background: radial-gradient(ellipse at 20% 50%, rgba(108,99,255,.18) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 20%, rgba(167,139,250,.14) 0%, transparent 55%),
-                var(--bg-dark);
+    background: radial-gradient(ellipse at 20% 50%, rgba(108, 99, 255, .18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(167, 139, 250, .14) 0%, transparent 55%),
+        var(--bg-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,7 +282,7 @@ body.home {
 
 /* CARD / PILL */
 .team-member {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     border-radius: 50px;
     padding: 15px 24px;
@@ -288,13 +290,13 @@ body.home {
     align-items: center;
     gap: 15px;
     transition: 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .team-member:hover {
     transform: translateY(-4px);
-    background: rgba(108,99,255,0.16);
+    background: rgba(108, 99, 255, 0.16);
 }
 
 .team-member img {
@@ -315,8 +317,8 @@ body.home {
    INNER PAGES
 ========================================== */
 body.inner-page {
-    background: radial-gradient(ellipse at top left, rgba(108,99,255,.1) 0%, transparent 50%),
-                var(--bg-dark);
+    background: radial-gradient(ellipse at top left, rgba(108, 99, 255, .1) 0%, transparent 50%),
+        var(--bg-dark);
     padding: 40px 16px 60px;
 }
 
@@ -388,7 +390,7 @@ body.inner-page {
 
 /* Info box */
 .box {
-    background: rgba(108,99,255,.07);
+    background: rgba(108, 99, 255, .07);
     border-left: 4px solid var(--accent);
     border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     padding: 20px 22px;
@@ -473,8 +475,8 @@ body.inner-page {
    REGRESSION APP PAGE
 ========================================== */
 body.grades-page {
-    background: radial-gradient(ellipse at bottom right, rgba(108,99,255,.12) 0%, transparent 55%),
-                var(--bg-dark);
+    background: radial-gradient(ellipse at bottom right, rgba(108, 99, 255, .12) 0%, transparent 55%),
+        var(--bg-dark);
     padding: 40px 16px 60px;
 }
 
@@ -581,6 +583,7 @@ body.grades-page {
     font-size: .9rem;
     text-align: center;
 }
+
 /* ══════════════════════════════════════════════
    QDA CONCEPTS PAGE
 ══════════════════════════════════════════════ */
@@ -605,7 +608,7 @@ body.grades-page {
     position: absolute;
     inset: 0;
     border-radius: 22px;
-    background: linear-gradient(to top, rgba(13,15,26,0.45), rgba(13,15,26,0.12));
+    background: linear-gradient(to top, rgba(13, 15, 26, 0.45), rgba(13, 15, 26, 0.12));
     pointer-events: none;
 }
 
@@ -614,8 +617,8 @@ body.grades-page {
     border-radius: 22px;
     object-fit: cover;
     max-height: 320px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.35);
-    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .qda-stats-row {
@@ -626,12 +629,12 @@ body.grades-page {
 }
 
 .qda-stat-box {
-    background: linear-gradient(135deg, rgba(108,99,255,0.16), rgba(167,139,250,0.08));
-    border: 1px solid rgba(167,139,250,0.18);
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.16), rgba(167, 139, 250, 0.08));
+    border: 1px solid rgba(167, 139, 250, 0.18);
     border-radius: 18px;
     padding: 18px;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .qda-stat-box h3 {
@@ -651,10 +654,10 @@ body.grades-page {
     margin-top: 30px;
     padding: 28px;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
-    border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.12);
     color: var(--text-primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .qda-quick-summary p {
@@ -670,9 +673,9 @@ body.grades-page {
     font-size: .85rem;
     font-weight: 600;
     margin: 6px 8px 0 0;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .qda-info-grid {
@@ -683,11 +686,11 @@ body.grades-page {
 }
 
 .qda-mini-card {
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
-    border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     color: var(--text-primary);
     min-height: 210px;
@@ -695,8 +698,8 @@ body.grades-page {
 
 .qda-mini-card:hover {
     transform: translateY(-7px);
-    box-shadow: 0 20px 38px rgba(0,0,0,0.24);
-    border-color: rgba(167,139,250,0.28);
+    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.24);
+    border-color: rgba(167, 139, 250, 0.28);
 }
 
 .qda-mini-card i {
@@ -721,30 +724,30 @@ body.grades-page {
 .qda-section-divider {
     margin: 44px 0 24px;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(167,139,250,0.4), transparent);
+    background: linear-gradient(to right, transparent, rgba(167, 139, 250, 0.4), transparent);
     border: none;
 }
 
 .qda-collapsible-card {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
     overflow: hidden;
     margin-bottom: 20px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
 }
 
 .qda-accordion .accordion-button {
     font-weight: 700;
     padding: 1.1rem 1.25rem;
-    background: rgba(255,255,255,0.10);
+    background: rgba(255, 255, 255, 0.10);
     color: #ffffff !important;
     border: none;
 }
 
 .qda-accordion .accordion-button:not(.collapsed) {
     box-shadow: none;
-    background: rgba(108,99,255,0.20);
+    background: rgba(108, 99, 255, 0.20);
     color: #ffffff !important;
 }
 
@@ -760,7 +763,7 @@ body.grades-page {
 
 .qda-accordion .accordion-body {
     color: #f1f3f5;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255, 255, 255, 0.04);
     padding: 1.25rem 1.25rem;
 }
 
@@ -783,11 +786,11 @@ body.grades-page {
 
 .qda-feature-panel {
     margin-top: 36px;
-    background: linear-gradient(135deg, rgba(108,99,255,0.12), rgba(167,139,250,0.06));
-    border: 1px solid rgba(167,139,250,0.16);
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.12), rgba(167, 139, 250, 0.06));
+    border: 1px solid rgba(167, 139, 250, 0.16);
     border-radius: 20px;
     padding: 26px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .qda-feature-panel p,
@@ -805,8 +808,8 @@ body.grades-page {
 }
 
 .qda-comparison-box {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: 18px;
     padding: 22px;
 }
@@ -833,11 +836,11 @@ body.grades-page {
     margin-top: 42px;
     padding: 28px;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.12);
     text-align: center;
     color: var(--text-primary);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
 .qda-future-link-box p {
@@ -852,7 +855,7 @@ body.grades-page {
 }
 
 .content-card .box.qda-box {
-    background: rgba(108,99,255,.10);
+    background: rgba(108, 99, 255, .10);
     border-left: 4px solid var(--accent-2);
 }
 
@@ -870,11 +873,12 @@ body.grades-page {
     margin-top: 18px;
     padding: 16px 18px;
     border-radius: 14px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: #eef1ff;
     font-size: 0.95rem;
 }
+
 
 /* ==========================================
    RESPONSIVE
@@ -950,203 +954,204 @@ body.grades-page {
     .predict-card {
         padding: 24px 20px;
     }
-}
-.logistic-header a.btn {
-    display: block;
-    margin: 15px auto 0 auto;
-    width: fit-content;
-    
+
+    .cluster {
+        padding: 5px 10px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Colores por cluster */
+    .cluster-0 {
+        background-color: #3498db;
+    }
+
+    /* azul */
+    .cluster-1 {
+        background-color: #2ecc71;
+    }
+
+    /* verde */
+    .cluster-2 {
+        background-color: #e74c3c;
+    }
+
+    /* rojo */
 }
 
-.logistic-header .qda-hero-actionsD {
-    display: flex;
-    flex-direction: row;
-    gap: 0;
-    justify-content: center;
-}
-
-.logistic-header .qda-hero-actionsD .btn {
-    margin: 0;
-}
-/* ==========================================
-   LOGISTIC REGRESSION FORM - DARK THEME
-========================================== */
-
-.model-info {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    margin-bottom: 28px;
-    box-shadow: var(--shadow);
-}
-
-.model-info h2 {
-    color: var(--accent-2);
-    font-size: 1.2rem;
-    margin-bottom: 14px;
-    font-weight: 700;
-}
-
-.model-info p {
-    color: var(--text-secondary);
-    line-height: 1.8;
-    margin-bottom: 14px;
-    text-align: justify;
-}
-
-.prediction-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-weight: 600;
-    font-size: .9rem;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: .06em;
-    margin-bottom: 4px;
-}
-
-/* INPUTS Y SELECTS */
-.prediction-form input[type="number"],
-.prediction-form input[type="text"],
-.prediction-form input[type="email"],
-.custom-select {
-    width: 100%;
-    padding: 13px 16px;
-    background: var(--bg-dark);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    color: var(--text-primary);
-    font-size: 1rem;
-    font-family: 'Inter', sans-serif;
-    transition: border-color .25s, box-shadow .25s, transform .2s;
-    outline: none;
-}
-
-/* PLACEHOLDERS */
-.prediction-form input::placeholder {
-    color: #6b7280;
-}
-
-/* FOCUS */
-.prediction-form input:focus,
-.custom-select:focus {
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-    transform: translateY(-1px);
-}
-
-/* SELECT PERSONALIZADO */
-.custom-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    padding-right: 46px;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='none' stroke='%23a78bfa' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><path stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'></path></svg>");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 18px;
-}
-
-/* OPCIONES DEL SELECT */
-.custom-select option {
-    background: var(--bg-card);
-    color: var(--text-primary);
-}
-
-/* BOTÓN */
-.prediction-form .btn-predict {
-    width: 100%;
-    margin-top: 8px;
-    padding: 14px;
-    background: linear-gradient(135deg, var(--accent), #8b5cf6);
+.cluster {
+    padding: 5px 10px;
+    border-radius: 8px;
     color: white;
-    border: none;
-    border-radius: var(--radius-sm);
-    font-size: 1rem;
-    font-weight: 700;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    transition: opacity .25s, transform .2s, box-shadow .25s;
-    box-shadow: 0 4px 18px rgba(108, 99, 255, .4);
+    font-weight: bold;
 }
 
-.prediction-form .btn-predict:hover {
-    opacity: .95;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(108, 99, 255, .55);
+.cluster-0 {
+    background-color: #3498db;
 }
 
-/* RESULTADO */
-.logistic-result-box {
-    margin-top: 28px;
-    padding: 22px;
-    border-radius: var(--radius);
-    background: linear-gradient(135deg, rgba(16,185,129,.10), rgba(108,99,255,.10));
-    border: 1px solid rgba(167,139,250,0.25);
+.cluster-1 {
+    background-color: #2ecc71;
+}
+
+.cluster-2 {
+    background-color: #e74c3c;
+}
+
+/* ==============================
+   CLUSTERING APP STYLES
+   ============================== */
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+}
+
+/* Titles */
+h1, h2 {
+    color: #a78bfa;
+    margin-bottom: 1rem;
+}
+
+p {
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* ==============================
+   PRO DASHBOARD TABLE (FINAL)
+   ============================== */
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: 1.5rem;
+
+    background: linear-gradient(145deg, #0b1120, #111827);
+    border-radius: 16px;
+    overflow: hidden;
+
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* HEADER */
+.table thead {
+    background: linear-gradient(135deg, #6d28d9, #8b5cf6);
+}
+
+.table th {
+    padding: 16px;
+    color: #f5f3ff;
+    font-weight: 600;
     text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.22);
+    font-size: 0.95rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.logistic-result-box h2 {
-    color: #ffffff;
-    font-size: 1.3rem;
-    font-weight: 800;
-    margin-bottom: 10px;
+/* CELLS */
+.table td {
+    padding: 14px;
+    text-align: center;
+    color: #e5e7eb;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.logistic-result-box p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin: 0;
+/* ROW BACKGROUNDS */
+.table tbody tr {
+    background: transparent;
+    transition: all 0.25s ease;
 }
 
-.logistic-result-box strong {
-    color: var(--accent-2);
+/* subtle gradient rows */
+.table tbody tr:nth-child(even) {
+    background: rgba(30, 41, 59, 0.4);
 }
 
-/* PEQUEÑO EFECTO HOVER EN CAMPOS */
-.prediction-form input:hover,
-.custom-select:hover {
-    border-color: rgba(167,139,250,0.45);
+/* HOVER EFFECT */
+.table tbody tr:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(139, 92, 246, 0.15),
+        rgba(59, 130, 246, 0.15)
+    );
+    transform: scale(1.01);
 }
 
-/* RESPONSIVE */
-@media (max-width: 600px) {
-    .model-info {
-        padding: 22px 18px;
-    }
+/* ==============================
+   FIX CONTENEDOR (CLAVE)
+   ============================== */
 
-    .logistic-result-box {
-        padding: 18px;
-    }
+.content-card {
+    background: linear-gradient(145deg, #0b1120, #0f172a) !important;
 }
 
-.covid-positive {
-    background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(108,99,255,.10));
-    border: 1px solid rgba(239,68,68,.35);
+/* tarjetas internas */
+.qda-feature-panel,
+.box,
+.qda-box {
+    background: linear-gradient(145deg, #111827, #0f172a) !important;
+    border-radius: 16px;
+    border: 1px solid rgba(139, 92, 246, 0.15);
 }
 
-.covid-positive h2 {
-    color: #f87171;
+/* ==============================
+   CLUSTER BADGES (IGUAL A IMG)
+   ============================== */
+
+.cluster-badge {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
 }
 
-.covid-negative {
-    background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(108,99,255,.10));
-    border: 1px solid rgba(16,185,129,.35);
+/* colores tipo dashboard */
+.cluster-0 {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-.covid-negative h2 {
-    color: #34d399;
+.cluster-1 {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.cluster-2 {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+}
+
+/* ==============================
+   SCROLL CONTAINER
+   ============================== */
+
+.scroll-table {
+    max-height: 420px;
+    overflow-y: auto;
+    border-radius: 16px;
+}
+
+/* scrollbar pro */
+.scroll-table::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-table::-webkit-scrollbar-thumb {
+    background: linear-gradient(#8b5cf6, #6366f1);
+    border-radius: 10px;
+}
+
+.table {
+    background-color: transparent !important;
+}
+
+.table * {
+    background-color: transparent !important;
+}
+
+/* unsupervised concepts */
+.content-card {
+    text-align: left; /* asegura que todo el contenido vaya a la izquierda */
 }
