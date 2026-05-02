@@ -1,6 +1,7 @@
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+import numpy as np
 
 
 def GetData():
@@ -130,10 +131,23 @@ def ApplyClusteringManualApp():
         label = int(label)
         clusterSummary[label] = clusterSummary.get(label, 0) + 1
 
-    centers = model.cluster_centers_.tolist()
+    #centers = model.cluster_centers_.tolist()
 
+    #return {
+    #    "result": result,
+    #    "clusterSummary": clusterSummary,
+    #    "centers": centers
+    #}
+
+    centers_scaled = model.cluster_centers_
+     
+    centers_original = scaler.inverse_transform(centers_scaled)
+    centers = centers_original.tolist()
     return {
         "result": result,
         "clusterSummary": clusterSummary,
-        "centers": centers
+        "centers": centers,  # Ahora son valores reales (m², precios, edad)
+        "centers_scaled": centers_scaled.tolist(),  # Opcional: centros normalizados
+        "scaler_mean": scaler.mean_.tolist(),  # Opcional
+        "scaler_scale": scaler.scale_.tolist()  # Opcional
     }
