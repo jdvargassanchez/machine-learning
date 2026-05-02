@@ -137,7 +137,7 @@
 
         <div class="box qda-box">
             <p>
-                Each cluster center represents the average property within that group 
+                Each cluster center represents the average property within that group
                 in the normalized feature space.
             </p>
 
@@ -174,39 +174,40 @@
         </div>
 
         <!-- INTERPRETATION -->
-<div class="qda-feature-panel mt-5">
-    <h2 class="section-title">Data-Driven Interpretation</h2>
+        <div class="qda-feature-panel mt-5">
+            <h2 class="section-title">Data-Driven Interpretation</h2>
 
-    <div class="qda-note">
-        <strong>Insight:</strong> The clustering algorithm has identified natural groupings based on size, price, and age.
-    </div>
+            <div class="qda-note">
+                <strong>Insight:</strong> The clustering algorithm has identified natural groupings based on size,
+                price, and age.
+            </div>
 
-    <div class="qda-two-col">
-        {% for key, value in clusterSummary.items() %}
-        <div class="qda-comparison-box">
-            <h4>Cluster {{ key }}</h4>
-            <p><strong>Properties:</strong> {{ value }}</p>
+            <div class="qda-two-col">
+                {% for key, value in clusterSummary.items() %}
+                <div class="qda-comparison-box">
+                    <h4>Cluster {{ key }}</h4>
+                    <p><strong>Properties:</strong> {{ value }}</p>
 
-            <p>
-                This cluster represents a segment of the market with similar structural characteristics.
+                    <p>
+                        This cluster represents a segment of the market with similar structural characteristics.
+                    </p>
+
+                    {% if key == 0 %}
+                    <p>Likely low-cost, compact housing segment.</p>
+                    {% elif key == 1 %}
+                    <p>Mid-range balanced properties.</p>
+                    {% elif key == 2 %}
+                    <p>High-end, large-scale real estate.</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+            <p class="mt-3">
+                This segmentation can be used for <strong>targeted marketing, pricing optimization,
+                    and investment strategy development</strong>.
             </p>
-
-            {% if key == 0 %}
-            <p>Likely low-cost, compact housing segment.</p>
-            {% elif key == 1 %}
-            <p>Mid-range balanced properties.</p>
-            {% elif key == 2 %}
-            <p>High-end, large-scale real estate.</p>
-            {% endif %}
         </div>
-        {% endfor %}
-    </div>
-
-    <p class="mt-3">
-        This segmentation can be used for <strong>targeted marketing, pricing optimization,
-        and investment strategy development</strong>.
-    </p>
-</div>
 
         <!-- BACK -->
         <a class="back-link" href="/">⬅ Back to Home</a>
@@ -220,97 +221,145 @@
     <!-- CHART -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <style>
+        .chart-container {
+            width: 100%;
+            height: 600px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+
     <script>
-    const data = JSON.parse('{{ result | tojson | safe }}');
-    const centers = JSON.parse('{{ centers | tojson | safe }}');
+        const data = JSON.parse('{{ result | tojson | safe }}');
+        const centers = JSON.parse('{{ centers | tojson | safe }}');
 
-    const colors = {
-        0: 'rgba(239, 68, 68, 0.7)',
-        1: 'rgba(59, 130, 246, 0.7)',
-        2: 'rgba(34, 197, 94, 0.7)'
-    };
+        const colors = {
+            0: 'rgba(239, 68, 68, 0.7)',
+            1: 'rgba(59, 130, 246, 0.7)',
+            2: 'rgba(34, 197, 94, 0.7)'
+        };
 
-    const borderColors = {
-        0: '#ef4444',
-        1: '#3b82f6',
-        2: '#22c55e'
-    };
+        const borderColors = {
+            0: '#ef4444',
+            1: '#3b82f6',
+            2: '#22c55e'
+        };
 
-    // CLUSTERS
-    const datasets = [0,1,2].map(c => ({
-        label: 'Cluster ' + c,
-        data: data.filter(d => d.Cluster === c).map(d => ({
-            x: d.square_meters,
-            y: d.price_thousands
-        })),
-        backgroundColor: colors[c],
-        borderColor: borderColors[c],
-        borderWidth: 1,
-        pointRadius: 6,
-        pointHoverRadius: 9
-    }));
+        // 🔹 CLUSTERS
+        const datasets = [0, 1, 2].map(c => ({
+            label: 'Cluster ' + c,
+            data: data
+                .filter(d => d.Cluster === c)
+                .map(d => ({
+                    x: d.square_meters,
+                    y: d.price_thousands,
+                    id: d.property_id,
+                    age: d.age
+                })),
+            backgroundColor: colors[c],
+            borderColor: borderColors[c],
+            borderWidth: 1,
+            pointRadius: 6,
+            pointHoverRadius: 10
+        }));
 
-const centroidDataset = {
-    label: 'Centroids',
-    data: centers.map((c, i) => ({
-        x: c[0] * 50 + 150,
-        y: c[1] * 100 + 300
-    })),
+        // 🔹 CENTROIDES (ya corregidos desde Python)
+        const centroidDataset = {
+            label: 'Centroids',
+            data: centers.map((c, i) => ({
+                x: c[0],
+                y: c[1],
+                label: 'Centroide ' + i
+            })),
+            backgroundColor: '#facc15',
+            borderColor: '#ffffff',
+            borderWidth: 3,
+            pointRadius: 12,
+            pointHoverRadius: 14,
+            pointStyle: 'rectRot'
+        };
 
-    backgroundColor: '#facc15', 
-    borderColor: '#ffffff',
-    borderWidth: 3,
+        datasets.push(centroidDataset);
 
-    pointRadius: 10,            
-    pointHoverRadius: 12,
+        // 🔹 CHART
+        new Chart(document.getElementById('clusterChart'), {
+            type: 'scatter',
+            data: { datasets: datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
 
-    pointStyle: 'rectRot',       
-};
-    datasets.push(centroidDataset);
-
-    new Chart(document.getElementById('clusterChart'), {
-        type: 'scatter',
-        data: { datasets: datasets },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: '#e5e7eb'
-                    }
+                interaction: {
+                    mode: 'nearest',
+                    intersect: false
                 },
-                tooltip: {
-                    callbacks: {
-                        label: function(ctx) {
-                            return `(${ctx.raw.x} m², $${ctx.raw.y}k)`;
+
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: { color: '#e5e7eb' }
+                    },
+
+                    tooltip: {
+                        backgroundColor: '#111827',
+                        titleColor: '#f9fafb',
+                        bodyColor: '#e5e7eb',
+                        borderColor: '#374151',
+                        borderWidth: 1,
+
+                        callbacks: {
+                            title: function (ctx) {
+                                const point = ctx[0].raw;
+                                return point.id ? point.id : point.label;
+                            },
+                            label: function (ctx) {
+                                const p = ctx.raw;
+
+                                // Si es un centroide
+                                if (!p.id) {
+                                    return `Centroide → Size: ${p.x} m² | Price: $${Math.round(p.y)}k`;
+                                }
+
+                                // Si es un dato normal
+                                return [
+                                    `Size: ${p.x} m²`,
+                                    `Price: $${p.y}k`,
+                                    `Age: ${p.age} years`
+                                ];
+                            }
                         }
                     }
-                }
-            },
-            scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: 'Size (m²)',
-                        color: '#c4b5fd'
-                    },
-                    ticks: { color: '#9ca3af' },
-                    grid: { color: '#1f2937' }
                 },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Price (Thousands)',
-                        color: '#c4b5fd'
+
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Size (m²)',
+                            color: '#c4b5fd'
+                        },
+                        ticks: { color: '#9ca3af' },
+                        grid: { color: '#1f2937' }
                     },
-                    ticks: { color: '#9ca3af' },
-                    grid: { color: '#1f2937' }
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Price (Thousands)',
+                            color: '#c4b5fd'
+                        },
+                        ticks: { color: '#9ca3af' },
+                        grid: { color: '#1f2937' }
+                    }
                 }
             }
-        }
-    });
-</script>
-
+        });
+    </script>
 </body>
 
 {% endblock %}
