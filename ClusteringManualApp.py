@@ -29,7 +29,7 @@ def GetData():
 def ApplyClusteringManualApp():
     data = GetData()
 
-    x = [[propiedad["metros2"], propiedad["precio_miles"], propiedad["antiguedad"]] for propiedad in data]
+    x = [[property["square_meters"], property["price_thousands"], property["age"]] for property in data]
     
     scaler = StandardScaler()
     Xscaled = scaler.fit_transform(x)
@@ -38,8 +38,8 @@ def ApplyClusteringManualApp():
     labels = model.fit_predict(Xscaled)
     
     result = []
-    for i, propiedad in enumerate(data):
-        row = propiedad.copy()
+    for i, property in enumerate(data):
+        row = property.copy()
         row["Cluster"] = int(labels[i])
         result.append(row)
         
